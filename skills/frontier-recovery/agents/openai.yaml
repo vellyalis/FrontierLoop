@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Recovery"
+  short_description: "Reconcile Git, worktree, evidence, and handoff safely"
+  default_prompt: "Use $frontier-recovery to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: true

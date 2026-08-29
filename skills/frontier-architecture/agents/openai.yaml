@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Architecture"
+  short_description: "Design cohesive ownership without a second system owner"
+  default_prompt: "Use $frontier-architecture to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: true

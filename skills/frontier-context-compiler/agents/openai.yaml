@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Context Compiler"
+  short_description: "Compile only context that can change the next decision"
+  default_prompt: "Use $frontier-context-compiler to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

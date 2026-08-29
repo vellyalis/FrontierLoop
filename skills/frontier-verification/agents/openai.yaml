@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Verification"
+  short_description: "Select decisive proof and optimize recurring feedback flow"
+  default_prompt: "Use $frontier-verification to select decisive proof or a project feedback ladder without weakening required gates."
+policy:
+  allow_implicit_invocation: false

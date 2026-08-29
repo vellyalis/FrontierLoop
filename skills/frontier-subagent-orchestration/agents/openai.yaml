@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Workstream Orchestration"
+  short_description: "Parallelize independent work without write conflicts"
+  default_prompt: "Use $frontier-subagent-orchestration to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

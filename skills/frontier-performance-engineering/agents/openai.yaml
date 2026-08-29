@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Performance Engineering"
+  short_description: "Optimize measured bottlenecks under controlled conditions"
+  default_prompt: "Use $frontier-performance-engineering to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: true

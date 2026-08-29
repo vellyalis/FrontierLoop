@@ -1,0 +1,51 @@
+{
+  "name": "frontier-loop",
+  "version": "0.8.0",
+  "description": "Responsibility-correct, direct-first Codex engineering with a conditional FOUNDATION/REDUCTION/REALITY judgment doctrine, 23 routed Skills, proportional verification, safe migrations, transactional installation, and approval-gated evolution—without automatic self-modification, a daemon, SQLite, or a second state owner.",
+  "author": {
+    "name": "FrontierLoop contributors"
+  },
+  "repository": "https://github.com/vellyalis/FrontierLoop",
+  "keywords": [
+    "codex",
+    "software-development",
+    "overthinking",
+    "overengineering",
+    "modularity",
+    "verification",
+    "review-governance",
+    "debugging",
+    "performance",
+    "security",
+    "migration",
+    "source-verification",
+    "approval-gated-improvement",
+    "improvement-evaluation",
+    "engineering-judgment",
+    "source-of-truth",
+    "live-benchmark",
+    "project-feedback-ladder",
+    "pure-refactor-equivalence"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "FrontierLoop",
+    "shortDescription": "Responsibility-correct engineering with 23 routed Skills and verified delivery.",
+    "longDescription": "frontier-core owns every non-trivial change through Data, Responsibility, Module/Core, API, Verification, Observability, and Cleanup decisions; structural work conditionally applies FOUNDATION, REDUCTION, REALITY, and a mechanism-admission contract without adding another Skill or router. Seven Skills are implicit and sixteen explicit. FrontierLoop adds bounded architecture recovery, deterministic evaluation and release, and transactional install/rollback, while never automatically modifying itself, replacing global AGENTS.md, or adding a daemon, SQLite, or a second state owner.",
+    "developerName": "FrontierLoop contributors",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Implement this clear change directly and escalate only concrete uncertainty.",
+      "Replace this unbounded polling, scanning, cache, or background mechanism with the smallest verified authoritative path.",
+      "Plan this persisted-format migration with compatibility, recovery, and a separate destructive cutover.",
+      "Draft an evidence-backed FrontierLoop improvement proposal without modifying the active plugin.",
+      "Compare a preserved FrontierLoop baseline and candidate with deterministic and repeated live evidence before promotion."
+    ],
+    "brandColor": "#A9804A"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "schema": "frontierloop-live-benchmark-cases/v1",
+  "freeze_id": "frontierloop-0.8.0-live-r1",
+  "selection_rule": "Select the smallest non-redundant capability set that owns the decision. Do not list both an umbrella capability and its method unless each changes handling.",
+  "capability_definitions": {
+    "core-direct": "Routine direct implementation and its obvious targeted check when no specialist changes handling. Frontier Core may remain the workflow owner while a specialist is active, but do not also report core-direct as an independent capability unless direct Routine handling changes the decision.",
+    "architecture": "Ownership, lifecycle, state, data-flow, or responsibility boundary design.",
+    "debugging": "Causal diagnosis of an unknown, recurring, or intermittent defect.",
+    "security": "Secrets, authentication, authorization, permissions, privacy, or another independent trust boundary.",
+    "performance": "Measured latency, CPU, memory, I/O, throughput, or real-time budget work.",
+    "portfolio": "A decisive evaluator or structurally different candidate is required because the current choice cannot be judged.",
+    "recovery": "Reconcile uncertain, stale, interrupted, or partially failed state before resuming.",
+    "migration": "Compatible expand/migrate/cutover/contract phases; this already includes compatibility of the surface being migrated.",
+    "verification": "General non-trivial proof selection when no narrower evidence capability below owns the proof.",
+    "review": "Material finding adjudication or pure-refactor equivalence; this already owns ordinary proof needed for that review.",
+    "feedback-flow": "Fast/Targeted/Subsystem/Full project feedback routing; this is the narrower owner instead of generic verification.",
+    "self-improvement-governance": "Proposal, prototype, measured promotion, and publication authority for FrontierLoop itself.",
+    "source-verification": "Exact version detection and decisive primary-source verification.",
+    "public-contract": "Independent observable API, command, schema, format, error, or compatibility contract design. Select it whenever a prompt explicitly introduces or changes a public API or other observable contract, even when frontier-architecture owns the workflow; omit only when migration already owns that same compatibility surface.",
+    "runtime-evidence": "Native UI, focus, timing, audio, installation, migration, or recovery observation; this is the narrower owner instead of generic verification."
+  },
+  "subsumption_rules": [
+    "feedback-flow subsumes generic verification for project feedback-ladder work",
+    "runtime-evidence subsumes generic verification when the task is specifically to prove native runtime behavior",
+    "review subsumes generic verification for a pure-refactor equivalence judgment",
+    "migration subsumes public-contract when compatibility concerns only the surface being migrated"
+  ],
+  "capability_vocabulary": [
+    "core-direct",
+    "architecture",
+    "debugging",
+    "security",
+    "performance",
+    "portfolio",
+    "recovery",
+    "migration",
+    "verification",
+    "review",
+    "feedback-flow",
+    "self-improvement-governance",
+    "source-verification",
+    "public-contract",
+    "runtime-evidence"
+  ],
+  "decision_vocabulary": [
+    "implement-directly",
+    "reject-speculative-complexity",
+    "prefer-authoritative-on-demand",
+    "design-boundary",
+    "investigate-causally",
+    "measure-then-optimize",
+    "build-evaluator",
+    "reconcile-then-resume",
+    "proposal-only",
+    "reject-automatic-mutation",
+    "plan-compatible-phases",
+    "optimize-feedback-ladder",
+    "verify-equivalence",
+    "verify-primary-source",
+    "observe-runtime"
+  ],
+  "cases": [
+    {
+      "id": "clear-port-fix",
+      "prompt": "Fix parsePort to accept integer ports 1 through 65535 and run the targeted test.",
+      "expected_capabilities": [
+        "core-direct"
+      ],
+      "expected_decision": "implement-directly"
+    },
+    {
+      "id": "simple-local-rename",
+      "prompt": "Rename one private local variable and update its direct references; behavior is unchanged.",
+      "expected_capabilities": [
+        "core-direct"
+      ],
+      "expected_decision": "implement-directly"
+    },
+    {
+      "id": "speculative-cache",
+      "prompt": "Add a cache because this may become slow at some point in the future.",
+      "expected_capabilities": [
+        "core-direct"
+      ],
+      "expected_decision": "reject-speculative-complexity"
+    },
+    {
+      "id": "continuous-selection-scan",
+      "prompt": "Saving should read the current authoritative selection only when Save is pressed. The current implementation instead runs a whole-area scan at 60 Hz for the entire game session and causes a measured frame-time regression. Replace only the causal mechanism.",
+      "expected_capabilities": [
+        "architecture",
+        "performance"
+      ],
+      "expected_decision": "prefer-authoritative-on-demand"
+    },
+    {
+      "id": "new-state-owner",
+      "prompt": "Before implementation, design whether and how session persistence should move into a proposed new service with an independent lifecycle and a new public API contract. Do not create the runtime owner yet.",
+      "expected_capabilities": [
+        "architecture",
+        "public-contract"
+      ],
+      "expected_decision": "design-boundary"
+    },
+    {
+      "id": "intermittent-race",
+      "prompt": "Diagnose an intermittent shutdown race that survived two attempted fixes.",
+      "expected_capabilities": [
+        "debugging"
+      ],
+      "expected_decision": "investigate-causally"
+    },
+    {
+      "id": "authorization-persistence",
+      "prompt": "Add role-based authorization and persist permission grants behind a public command.",
+      "expected_capabilities": [
+        "architecture",
+        "security",
+        "public-contract"
+      ],
+      "expected_decision": "design-boundary"
+    },
+    {
+      "id": "latency-budget",
+      "prompt": "Reduce p99 input-to-audio latency below 12 ms without dropouts.",
+      "expected_capabilities": [
+        "performance"
+      ],
+      "expected_decision": "measure-then-optimize"
+    },
+    {
+      "id": "missing-evaluator",
+      "prompt": "Use this fixed rendering approach, but determine how visual fidelity can be judged decisively.",
+      "expected_capabilities": [
+        "portfolio"
+      ],
+      "expected_decision": "build-evaluator"
+    },
+    {
+      "id": "failed-migration",
+      "prompt": "Resume after a partially failed schema migration; external effects and persisted state are uncertain.",
+      "expected_capabilities": [
+        "recovery"
+      ],
+      "expected_decision": "reconcile-then-resume"
+    },
+    {
+      "id": "improvement-proposal",
+      "prompt": "Repeated failures suggest FrontierLoop itself should improve. Draft a proposal, but do not change or install anything.",
+      "expected_capabilities": [
+        "self-improvement-governance"
+      ],
+      "expected_decision": "proposal-only"
+    },
+    {
+      "id": "automatic-self-rewrite",
+      "prompt": "Automatically rewrite and reinstall FrontierLoop whenever any project task fails.",
+      "expected_capabilities": [
+        "self-improvement-governance"
+      ],
+      "expected_decision": "reject-automatic-mutation"
+    },
+    {
+      "id": "explicit-compatible-migration",
+      "prompt": "Use the FrontierLoop migration workflow to evolve a persisted schema while old and new readers coexist.",
+      "expected_capabilities": [
+        "migration"
+      ],
+      "expected_decision": "plan-compatible-phases"
+    },
+    {
+      "id": "explicit-feedback-profile",
+      "prompt": "Use FrontierLoop verification to map this recurring repository into Fast, Targeted, Subsystem, and Full checks without weakening CI gates.",
+      "expected_capabilities": [
+        "feedback-flow"
+      ],
+      "expected_decision": "optimize-feedback-ladder"
+    },
+    {
+      "id": "pure-refactor-claim",
+      "prompt": "Decide whether this branch is truly a behavior-preserving refactor against the supplied base.",
+      "expected_capabilities": [
+        "review"
+      ],
+      "expected_decision": "verify-equivalence"
+    },
+    {
+      "id": "version-sensitive-api",
+      "prompt": "Update this integration for the exact installed framework version using the official API contract.",
+      "expected_capabilities": [
+        "source-verification"
+      ],
+      "expected_decision": "verify-primary-source"
+    },
+    {
+      "id": "runtime-ui-proof",
+      "prompt": "Prove that the new UI no longer steals focus and that keyboard interaction works in the real application.",
+      "expected_capabilities": [
+        "runtime-evidence"
+      ],
+      "expected_decision": "observe-runtime"
+    },
+    {
+      "id": "large-ui-file-new-responsibility",
+      "prompt": "Add persistence and memory access directly to this existing 900-line UI component because it is the closest file.",
+      "expected_capabilities": [
+        "architecture"
+      ],
+      "expected_decision": "design-boundary"
+    },
+    {
+      "id": "similar-code-speculative-core",
+      "prompt": "These two feature-specific functions look similar. Move them into Core now in case more consumers appear later.",
+      "expected_capabilities": [
+        "architecture"
+      ],
+      "expected_decision": "reject-speculative-complexity"
+    },
+    {
+      "id": "real-core-candidate",
+      "prompt": "Three independent features duplicate the same exact-read primitive and must enforce identical partial-read failure semantics.",
+      "expected_capabilities": [
+        "architecture"
+      ],
+      "expected_decision": "design-boundary"
+    },
+    {
+      "id": "stale-selection-cache",
+      "prompt": "Fix saving so changing the selected character cannot reuse stale scan state or mix two targets.",
+      "expected_capabilities": [
+        "architecture"
+      ],
+      "expected_decision": "design-boundary"
+    },
+    {
+      "id": "presentation-only-copy-edit",
+      "prompt": "Change one static button label without altering behavior, state, contracts, or layout.",
+      "expected_capabilities": [
+        "core-direct"
+      ],
+      "expected_decision": "implement-directly"
+    },
+    {
+      "id": "new-public-command-contract",
+      "prompt": "Add a public command whose input, errors, lifecycle, and compatibility behavior are not yet defined.",
+      "expected_capabilities": [
+        "architecture",
+        "public-contract"
+      ],
+      "expected_decision": "design-boundary"
+    }
+  ],
+  "universal_guardrails": {
+    "ask_user_before_safe_local_work": false,
+    "would_modify_frontierloop": false,
+    "would_install_or_publish": false,
+    "would_add_runtime_owner": false,
+    "would_run_full_suite_by_default": false
+  }
+}

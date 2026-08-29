@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Version Control"
+  short_description: "Protect dirty work, checkpoints, branches, and remotes"
+  default_prompt: "Use $frontier-version-control to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,618 @@
+{
+  "schema": "frontierloop-improvement-benchmark/v1",
+  "promotion_gate": {
+    "require_all_retained_capabilities_in_baseline": true,
+    "require_all_retained_capabilities_in_candidate": true,
+    "require_all_candidate_capabilities": true,
+    "require_all_candidate_guardrails": true,
+    "minimum_capability_gain": 1,
+    "maximum_implicit_skills": 7,
+    "minimum_routing_contracts": 16
+  },
+  "capabilities": [
+    {
+      "id": "portfolio-selection",
+      "class": "retained",
+      "description": "Uncertain solution or evaluator work has a bounded comparison owner.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-portfolio"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project-feedback-flow",
+      "class": "retained",
+      "description": "Recurring projects can use a Fast/Targeted/Subsystem/Full feedback ladder without weakening proof.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-flow"
+          ]
+        },
+        {
+          "required_paths_all": [
+            "skills/frontier-verification/references/project-flow-profile.md"
+          ],
+          "required_text_all": [
+            "Fast.*Targeted.*Subsystem.*Full"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "responsibility-based-engineering",
+      "class": "retained",
+      "description": "Non-trivial implementation is structured by ownership, responsibility, and a real vertical slice.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-engineering"
+          ]
+        },
+        {
+          "required_skills_all": [
+            "frontier-core",
+            "frontier-architecture"
+          ],
+          "required_text_all": [
+            "Balanced modularity",
+            "Vertical [Ss]lice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decisive-verification",
+      "class": "retained",
+      "description": "Verification selects the smallest evidence that can change a decision and stops when the claim is decided.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-verification"
+          ],
+          "required_text_all": [
+            "smallest decisive",
+            "Stop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finite-review",
+      "class": "retained",
+      "description": "Material review converges without nit, duplicate, or invented-requirement loops.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-review"
+          ]
+        },
+        {
+          "required_skills_all": [
+            "frontier-review-governance"
+          ],
+          "required_text_all": [
+            "Deduplicate",
+            "Rework Budget"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "handoff-recovery",
+      "class": "retained",
+      "description": "Interrupted or uncertain work is reconciled with Git and fresh evidence before resuming.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-handoff"
+          ]
+        },
+        {
+          "required_skills_all": [
+            "frontier-recovery"
+          ],
+          "required_text_all": [
+            "Reconcile",
+            "Current Best"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pure-refactor-equivalence",
+      "class": "retained",
+      "description": "A claimed pure refactor is judged against an explicit base rather than trusted by label or passing tests alone.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-review/references/pure-refactor.md"
+          ]
+        },
+        {
+          "required_paths_all": [
+            "skills/frontier-review-governance/references/pure-refactor.md"
+          ],
+          "required_text_all": [
+            "pure_refactor: true \\| false \\| not_proven"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "direct-first-core",
+      "class": "candidate",
+      "description": "Clear, reversible work starts with implementation rather than a routing or planning ceremony.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-core"
+          ],
+          "required_text_all": [
+            "## Direct-first execution",
+            "Do not create a plan document"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "root-cause-debugging",
+      "class": "candidate",
+      "description": "Unknown or recurring defects have a causal investigation specialist.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-debug-investigation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security-specialist",
+      "class": "candidate",
+      "description": "Credentials, permissions, untrusted input, and supply-chain boundaries have a direct specialist.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-security-review"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "performance-specialist",
+      "class": "candidate",
+      "description": "Measured latency, memory, CPU, and I/O goals have a direct specialist.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-performance-engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compatible-migration",
+      "class": "candidate",
+      "description": "Persisted and public contracts migrate through compatible, recoverable phases.",
+      "alternatives": [
+        {
+          "required_skills_all": [
+            "frontier-migration"
+          ],
+          "required_text_all": [
+            "### 2\\. Expand",
+            "### 6\\. Contract"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "version-sensitive-primary-source",
+      "class": "candidate",
+      "description": "Version-dependent work verifies the installed version and decisive primary source.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-context-compiler/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Version-sensitive source lane",
+            "Do not guess the version"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "public-contract-lane",
+      "class": "candidate",
+      "description": "Observable APIs, commands, schemas, and formats receive explicit compatibility and error semantics.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-architecture/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Public contract lane",
+            "machine-checkable input, output, error"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "retrieved-browser-trust-boundary",
+      "class": "candidate",
+      "description": "Retrieved pages, browser state, logs, and model output remain untrusted data rather than authority.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-security-review/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Retrieved and browser data boundary",
+            "untrusted data"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "runtime-experience-evidence",
+      "class": "candidate",
+      "description": "Claims about UI, focus, timing, installation, migration, and recovery require native runtime evidence.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-verification/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Runtime and experience evidence",
+            "real runtime evidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "approval-gated-self-improvement",
+      "class": "candidate",
+      "description": "Observation, proposal, prototype, promotion, and publication are separate authority states.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-core/references/IMPROVEMENT_GOVERNANCE.md"
+          ],
+          "required_text_all": [
+            "approved_for_prototype",
+            "validated_for_promotion",
+            "approved_for_promotion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "measured-improvement-gate",
+      "class": "candidate",
+      "description": "A FrontierLoop change must compare a preserved baseline and candidate with deterministic and live evidence.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-core/references/IMPROVEMENT_EVALUATION.md",
+            "evaluation/improvement-benchmark.json",
+            "evaluation/live-benchmark-cases.json"
+          ],
+          "required_source_paths_all": [
+            "scripts/evaluate_frontierloop.py",
+            "scripts/run_live_benchmark.py",
+            "scripts/compare_live_benchmarks.py"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "instruction-bundle-artifact-evaluation",
+      "class": "candidate",
+      "description": "Instruction changes preserve an exact active bundle and are judged by matched final artifacts before cost.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-core/references/IMPROVEMENT_EVALUATION.md"
+          ],
+          "required_text_all": [
+            "## Instruction-bundle claims",
+            "matched representative tasks",
+            "final Artifact quality",
+            "configured discovery limit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hard-only-first-principles",
+      "class": "candidate",
+      "description": "First-principles reconstruction stays inside the explicit deep-engineering owner and requires a hard-problem gate.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-deep-engineering/SKILL.md"
+          ],
+          "required_text_all": [
+            "### First-principles lane gate",
+            "次のすべて",
+            "additional decomposition|追加分解",
+            "構造判断が解けた時点"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deterministic-release",
+      "class": "candidate",
+      "description": "Release artifacts are deterministically rebuilt and exclude their own output path.",
+      "alternatives": [
+        {
+          "required_source_paths_all": [
+            "scripts/build_release.py"
+          ],
+          "required_source_text_all": [
+            "deterministic_copy",
+            "excluded_roots"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transactional-install-integrity",
+      "class": "candidate",
+      "description": "Installation rejects duplicate registrations and file drift and restores previous state on failure.",
+      "alternatives": [
+        {
+          "required_source_paths_all": [
+            "scripts/Install-FrontierLoop.ps1",
+            "scripts/Verify-FrontierLoop.ps1",
+            "tests/Test-FrontierLoopInstall.ps1"
+          ],
+          "required_source_text_all": [
+            "Assert-SoleRegisteredPlugin",
+            "restoring previous FrontierLoop state"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engineering-change-gate",
+      "class": "candidate",
+      "description": "Every non-trivial change evaluates data, responsibility, module/Core placement, API, verification, observability, and cleanup without forcing ceremony.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-core/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Engineering change gate",
+            "### Smallest coherent change",
+            "### Core placement",
+            "### Observability",
+            "### Cleanup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "foundation-reduction-reality-judgment",
+      "class": "candidate",
+      "description": "Structural changes establish authoritative state, remove unnecessary mechanisms, and verify representative runtime behavior without adding another router or Skill.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-core/references/ENGINEERING_JUDGMENT.md",
+            "skills/frontier-core/SKILL.md",
+            "skills/frontier-architecture/SKILL.md",
+            "skills/frontier-debug-investigation/SKILL.md",
+            "skills/frontier-performance-engineering/SKILL.md",
+            "skills/frontier-migration/SKILL.md"
+          ],
+          "required_source_paths_all": [
+            "scripts/Verify-FrontierLoop.ps1"
+          ],
+          "required_text_all": [
+            "## FOUNDATION",
+            "## REDUCTION",
+            "## REALITY",
+            "## Mechanism admission rule",
+            "DIRECT.*INVESTIGATE.*RESTRUCTURE.*BLOCKED",
+            "conditional decision reference",
+            "Prefer an authoritative event, direct read, or on-demand action",
+            "one canonical\\s+authority during coexistence",
+            "Require-Patterns",
+            "active_sha256"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bounded-architecture-recovery",
+      "class": "candidate",
+      "description": "Existing tangled architecture is repaired one responsibility and user flow at a time rather than through a repository-wide rewrite.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-architecture/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Existing-system boundary recovery lane",
+            "canonical owner",
+            "real consumers",
+            "superseded runtime path"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-placement-judgment",
+      "class": "candidate",
+      "description": "Core admission requires stable semantics, invariants, ownership, and real consumers rather than code similarity or hypothetical reuse.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-architecture/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Core and module placement lane",
+            "at least two real consumers",
+            "Reject speculative reuse"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "routine-core-inheritance",
+      "class": "candidate",
+      "description": "Routine work inherits frontier-core ownership and rejects nearest-file patches that violate responsibility.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-routine-change/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Frontier Core integration",
+            "nearest-file",
+            "responsibility-correct"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "context-gate-continuity",
+      "class": "candidate",
+      "description": "Compaction and handoff preserve decision-bearing Engineering Change Gate state without creating a second database.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-context-compiler/SKILL.md",
+            "skills/frontier-context-compiler/templates/CONTEXT_MANIFEST.md"
+          ],
+          "required_text_all": [
+            "## Engineering Change Gate integration",
+            "Engineering Change Gate State",
+            "Decision-bearing Engineering Change Gate state"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evidence-gate-retention",
+      "class": "candidate",
+      "description": "Evidence packets retain the Engineering Change Gate summary, direct proof, and residual risk at real delivery boundaries.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-evidence-pack/SKILL.md",
+            "skills/frontier-evidence-pack/templates/evidence-pack.md"
+          ],
+          "required_text_all": [
+            "## Engineering Change Gate integration",
+            "Engineering Change Summary",
+            "Residual Risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-structural-closed-basis",
+      "class": "candidate",
+      "description": "Independent review and governance use evidence-backed structural defects with closed blocking bases.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-independent-review/SKILL.md",
+            "skills/frontier-review-governance/SKILL.md"
+          ],
+          "required_text_all": [
+            "Duplicate Canonical Owner",
+            "Failure Mechanism",
+            "closed basis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subagent-gate-propagation",
+      "class": "candidate",
+      "description": "Delegated work receives decision-bearing gate context while the parent prevents a second owner and reconciles integration.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-subagent-orchestration/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Engineering Change Gate integration",
+            "second owner|第二Owner",
+            "Parent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "version-control-clean-cutover",
+      "class": "candidate",
+      "description": "Version-control checkpoints contain one responsibility-correct coherent vertical and do not conceal divergent superseded paths.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-version-control/SKILL.md"
+          ],
+          "required_text_all": [
+            "responsibility-correct coherent vertical",
+            "divergent",
+            "Removal condition"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verification-gate-proof",
+      "class": "candidate",
+      "description": "Verification decides material lifetime and cleanup claims carried by the Engineering Change Gate.",
+      "alternatives": [
+        {
+          "required_paths_all": [
+            "skills/frontier-verification/SKILL.md"
+          ],
+          "required_text_all": [
+            "## Engineering Change Gate integration",
+            "Lifetime",
+            "Cleanup"
+          ]
+        }
+      ]
+    }
+  ],
+  "guardrails": [
+    {
+      "id": "no-forbidden-runtime-files",
+      "check": "no_forbidden_runtime_files"
+    },
+    {
+      "id": "no-plugin-agents-md",
+      "check": "no_plugin_agents_md"
+    },
+    {
+      "id": "implicit-skill-budget",
+      "check": "implicit_skill_budget"
+    },
+    {
+      "id": "routing-contract-floor",
+      "check": "routing_contract_floor"
+    },
+    {
+      "id": "no-automatic-mutation-contract",
+      "check": "no_automatic_mutation_contract"
+    },
+    {
+      "id": "one-plugin-manifest",
+      "check": "one_plugin_manifest"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Repository State"
+  short_description: "Preserve only the state needed to resume safely"
+  default_prompt: "Use $frontier-state-manager to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

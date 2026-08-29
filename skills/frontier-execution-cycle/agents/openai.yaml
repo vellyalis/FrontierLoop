@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Execution Cycle"
+  short_description: "Use finite R-PDCA without analysis loops"
+  default_prompt: "Use $frontier-execution-cycle to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

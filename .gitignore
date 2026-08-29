@@ -1,0 +1,16 @@
+# Generated evaluation/runtime evidence
+evaluation/results/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Transactional installer scratch
+.frontier-loop-*/
+*install-backup*
+
+# Local editor / OS noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.log

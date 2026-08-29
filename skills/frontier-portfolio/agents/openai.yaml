@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Portfolio"
+  short_description: "Build a decisive evaluator before comparing directions"
+  default_prompt: "Use $frontier-portfolio to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Core"
+  short_description: "Direct-first engineering without process inflation"
+  default_prompt: "Use $frontier-core to implement this change directly and escalate only concrete uncertainty or risk."
+policy:
+  allow_implicit_invocation: true

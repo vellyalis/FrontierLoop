@@ -1,0 +1,182 @@
+{
+  "schema": "frontierloop-engineering-judgment-activation-cases/v1",
+  "decision_vocabulary": [
+    "implement-directly",
+    "investigate-ground-truth",
+    "preserve-canonical-owner",
+    "reject-speculative-complexity",
+    "replace-with-authoritative-on-demand",
+    "measure-causal-path",
+    "plan-compatible-phases"
+  ],
+  "cases": [
+    {
+      "id": "micro-private-rename",
+      "request": "Rename one private local variable and update its direct references. Behavior, data, ownership, lifetime, contracts, and diagnostics do not change.",
+      "expected_decision": "implement-directly",
+      "required_selected_skills": [],
+      "allowed_optional_selected_skills": [
+        "frontier-core"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-architecture",
+        "frontier-complexity-review",
+        "frontier-debug-investigation",
+        "frontier-performance-engineering",
+        "frontier-migration",
+        "frontier-routine-change"
+      ],
+      "expected_doctrine": false
+    },
+    {
+      "id": "static-label-copy",
+      "request": "Change one static button label. It does not alter layout, behavior, state, contracts, ownership, or diagnostics.",
+      "expected_decision": "implement-directly",
+      "required_selected_skills": [],
+      "allowed_optional_selected_skills": [
+        "frontier-core"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-architecture",
+        "frontier-complexity-review",
+        "frontier-debug-investigation",
+        "frontier-performance-engineering",
+        "frontier-migration",
+        "frontier-routine-change"
+      ],
+      "expected_doctrine": false
+    },
+    {
+      "id": "second-session-owner",
+      "request": "SessionStore is the sole writer and persisted canonical owner of session state until logout. UI modules read projections from it. A proposal adds BackgroundSessionService with an independently writable persisted copy only to simplify one screen. Decide the responsibility boundary before implementation.",
+      "expected_decision": "preserve-canonical-owner",
+      "accepted_decisions": [
+        "preserve-canonical-owner",
+        "reject-speculative-complexity"
+      ],
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-architecture"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-performance-engineering",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "large-ui-nearest-file",
+      "request": "A 900-line UI component currently owns rendering only. ProfileRepository owns persistence and RuntimeProbe owns process memory access. Add saving and memory reads directly to the UI component because it is the closest file. Decide the responsibility placement.",
+      "expected_decision": "preserve-canonical-owner",
+      "accepted_decisions": [
+        "preserve-canonical-owner",
+        "reject-speculative-complexity"
+      ],
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-architecture"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-performance-engineering",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "speculative-core-promotion",
+      "request": "Two feature-specific functions have similar syntax but enforce different domain semantics. Move them into Core now because more consumers may appear someday. Decide whether to admit the abstraction.",
+      "expected_decision": "reject-speculative-complexity",
+      "required_selected_skills": [
+        "frontier-core"
+      ],
+      "allowed_optional_selected_skills": [
+        "frontier-architecture"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-complexity-review",
+        "frontier-performance-engineering",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "stale-selection-cache",
+      "request": "SelectionController owns the current selected-character handle and updates it atomically on every click. Save currently reuses a cached result from an earlier neighborhood scan, so it can save the previous character. The controller can be read synchronously when Save is pressed. Choose the causal design change.",
+      "expected_decision": "replace-with-authoritative-on-demand",
+      "accepted_decisions": [
+        "replace-with-authoritative-on-demand",
+        "preserve-canonical-owner"
+      ],
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-architecture"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-debug-investigation",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "continuous-selection-scan",
+      "request": "SelectionController is the authoritative current-selection owner and supports a synchronous read when Save is pressed. The current workaround scans the whole area at 60 Hz for the entire game session and causes a measured frame-time regression. Replace only the causal mechanism and state the required verification.",
+      "expected_decision": "replace-with-authoritative-on-demand",
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-performance-engineering"
+      ],
+      "allowed_optional_selected_skills": [
+        "frontier-architecture"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-debug-investigation",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "unknown-shutdown-race",
+      "request": "Diagnose an intermittent shutdown race that survived two attempted fixes. The owner and causal ordering are not yet proven. Do not add retries, delays, caches, or fallback before a discriminating experiment.",
+      "expected_decision": "investigate-ground-truth",
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-debug-investigation"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "measured-latency-budget",
+      "request": "Reduce measured p99 input-to-audio latency from 21 ms to below 12 ms without dropouts. Ownership and the public contract are unchanged; the causal stage has not yet been profiled.",
+      "expected_decision": "measure-causal-path",
+      "accepted_decisions": [
+        "measure-causal-path",
+        "investigate-ground-truth"
+      ],
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-performance-engineering"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-architecture",
+        "frontier-migration"
+      ],
+      "expected_doctrine": true
+    },
+    {
+      "id": "explicit-persisted-migration",
+      "request": "Use FrontierLoop migration to evolve a persisted schema while old and new readers coexist. The canonical writer must remain singular, interruption must be recoverable, and the old path must have a verified removal condition.",
+      "expected_decision": "plan-compatible-phases",
+      "required_selected_skills": [
+        "frontier-core",
+        "frontier-migration"
+      ],
+      "forbidden_selected_skills": [
+        "frontier-performance-engineering"
+      ],
+      "expected_doctrine": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Review Governance"
+  short_description: "Converge review and verify pure-refactor equivalence"
+  default_prompt: "Use $frontier-review-governance to adjudicate material findings or test a claimed pure refactor against an explicit base."
+policy:
+  allow_implicit_invocation: false

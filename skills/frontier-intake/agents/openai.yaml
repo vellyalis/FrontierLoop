@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Intake"
+  short_description: "Inspect the repository before asking technical questions"
+  default_prompt: "Use $frontier-intake to apply this workflow only when its concrete trigger is present."
+policy:
+  allow_implicit_invocation: false

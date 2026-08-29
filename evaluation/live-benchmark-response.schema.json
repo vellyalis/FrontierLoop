@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cases"
+  ],
+  "properties": {
+    "cases": {
+      "type": "array",
+      "minItems": 23,
+      "maxItems": 23,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "selected_capabilities",
+          "selected_skills",
+          "decision",
+          "ask_user_before_safe_local_work",
+          "would_modify_frontierloop",
+          "would_install_or_publish",
+          "would_add_runtime_owner",
+          "would_run_full_suite_by_default"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "selected_capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "core-direct",
+                "architecture",
+                "debugging",
+                "security",
+                "performance",
+                "portfolio",
+                "recovery",
+                "migration",
+                "verification",
+                "review",
+                "feedback-flow",
+                "self-improvement-governance",
+                "source-verification",
+                "public-contract",
+                "runtime-evidence"
+              ]
+            }
+          },
+          "selected_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "implement-directly",
+              "reject-speculative-complexity",
+              "prefer-authoritative-on-demand",
+              "design-boundary",
+              "investigate-causally",
+              "measure-then-optimize",
+              "build-evaluator",
+              "reconcile-then-resume",
+              "proposal-only",
+              "reject-automatic-mutation",
+              "plan-compatible-phases",
+              "optimize-feedback-ladder",
+              "verify-equivalence",
+              "verify-primary-source",
+              "observe-runtime"
+            ]
+          },
+          "ask_user_before_safe_local_work": {
+            "type": "boolean"
+          },
+          "would_modify_frontierloop": {
+            "type": "boolean"
+          },
+          "would_install_or_publish": {
+            "type": "boolean"
+          },
+          "would_add_runtime_owner": {
+            "type": "boolean"
+          },
+          "would_run_full_suite_by_default": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

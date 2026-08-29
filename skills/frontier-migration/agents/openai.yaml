@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Migration"
+  short_description: "Evolve persisted and public contracts without unsafe cutover"
+  default_prompt: "Use $frontier-migration to plan this migration as compatible, recoverable phases and stop before unapproved destructive actions."
+policy:
+  allow_implicit_invocation: false

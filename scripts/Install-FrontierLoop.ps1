@@ -11,7 +11,7 @@ $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 function Full([string]$P){[IO.Path]::GetFullPath($P).TrimEnd([char[]]'\/')}
 function Child([string]$P,[string]$R){(Full $P).StartsWith((Full $R)+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)}
-function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
+function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();$p-eq'.git'-or$p.StartsWith('.git/')-or$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
 function Inventory([string]$Base){
   $r=Full $Base;$rows=[Collections.Generic.List[object]]::new();$stack=[Collections.Generic.Stack[string]]::new();$stack.Push($r)
   while($stack.Count){$d=$stack.Pop();foreach($i in [IO.DirectoryInfo]::new($d).EnumerateFileSystemInfos()|Sort-Object FullName){$rel=[IO.Path]::GetRelativePath($r,$i.FullName).Replace('\','/');if(Excluded $rel){continue};$rp=(($i.Attributes-band[IO.FileAttributes]::ReparsePoint)-ne0);if($rp){$rows.Add([ordered]@{path=$rel;kind='reparse';target=[string](@($i.Target)[0])})}elseif($i-is[IO.DirectoryInfo]){$stack.Push($i.FullName)}else{$rows.Add([ordered]@{path=$rel;kind='file';length=$i.Length;sha256=(Get-FileHash -LiteralPath $i.FullName -Algorithm SHA256).Hash})}}}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 - 2026-08-29
+
+- Made Git checkouts first-class installation sources by explicitly excluding `.git/`
+  from installed caches, source equivalence, and release payload semantics.
+- Added first-class `taddkorro.plugin.json`, public Git distribution metadata,
+  portable evaluation paths, root licensing, and a Taddkorro/Codex paired-suite path.
+- Preserved all 23 Skill bodies and the 7 implicit / 16 explicit routing split from 0.8.0.
+
 ## Unreleased
 
 - Added matched read-only engineering-judgment activation probes that require successful Skill-body and

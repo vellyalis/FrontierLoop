@@ -3,7 +3,7 @@ param([string]$Root=(Split-Path $PSScriptRoot -Parent),[string]$ExpectedSource,[
 $ErrorActionPreference='Stop';Set-StrictMode -Version Latest
 $ExpectedImplicit=@('frontier-architecture','frontier-core','frontier-debug-investigation','frontier-performance-engineering','frontier-portfolio','frontier-recovery','frontier-security-review')|Sort-Object
 function Full([string]$P){[IO.Path]::GetFullPath($P).TrimEnd([char[]]'\/')}
-function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();return $p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
+function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();return $p-eq'.git'-or$p.StartsWith('.git/')-or$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
 function Require-Patterns([string]$Path,[string[]]$Patterns){
  if(-not(Test-Path -LiteralPath $Path -PathType Leaf)){throw "Missing $Path"}
  $text=Get-Content -LiteralPath $Path -Raw

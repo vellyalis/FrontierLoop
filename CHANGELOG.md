@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.2 - 2026-08-29
+
+- Fixed Codex Personal Marketplace path resolution: local plugin paths are resolved from the configured marketplace root, not from `.agents/plugins/marketplace.json` itself.
+- Added a fail-closed marketplace-layout contract so Codex and Taddkorro share the same canonical authoring source without a second plugin owner.
+
 ## 0.8.1 - 2026-08-29
 
 - Made Git checkouts first-class installation sources by explicitly excluding `.git/`

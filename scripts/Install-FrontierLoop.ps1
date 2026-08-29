@@ -11,6 +11,15 @@ $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 function Full([string]$P){[IO.Path]::GetFullPath($P).TrimEnd([char[]]'\/')}
 function Child([string]$P,[string]$R){(Full $P).StartsWith((Full $R)+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)}
+function MarketplaceRoot([string]$Marketplace){
+  $file=Full $Marketplace
+  $pluginsDir=[IO.Path]::GetDirectoryName($file)
+  $agentsDir=[IO.Path]::GetDirectoryName($pluginsDir)
+  if([IO.Path]::GetFileName($pluginsDir)-ne'plugins'-or[IO.Path]::GetFileName($agentsDir)-ne'.agents'){
+    throw "Codex marketplace must be <root>/.agents/plugins/marketplace.json: $file"
+  }
+  return Full ([IO.Path]::GetDirectoryName($agentsDir))
+}
 function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();$p-eq'.git'-or$p.StartsWith('.git/')-or$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
 function Inventory([string]$Base){
   $r=Full $Base;$rows=[Collections.Generic.List[object]]::new();$stack=[Collections.Generic.Stack[string]]::new();$stack.Push($r)
@@ -58,7 +67,7 @@ function Assert-SoleRegisteredPlugin([string[]]$Files,[string]$ExpectedSource){
     $source=$matches[0].source
     if(-not$source-or[string]$source.source-ne'local'-or[string]::IsNullOrWhiteSpace([string]$source.path)){throw "FrontierLoop marketplace source must be a local path: $file"}
     $declared=[string]$source.path
-    $resolved=if([IO.Path]::IsPathRooted($declared)){Full $declared}else{Full (Join-Path ([IO.Path]::GetDirectoryName($marketplace)) $declared)}
+    $resolved=if([IO.Path]::IsPathRooted($declared)){Full $declared}else{Full (Join-Path (MarketplaceRoot $marketplace) $declared)}
     if(-not[string]::Equals($resolved,(Full $ExpectedSource),[StringComparison]::OrdinalIgnoreCase)){throw "FrontierLoop marketplace source differs from canonical source: $file -> $resolved"}
   }
   if($total-ne1){throw "Multiple effective frontier-loop registrations across supplied marketplaces: $total"}

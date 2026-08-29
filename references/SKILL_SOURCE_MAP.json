@@ -164,6 +164,6 @@
       "adaptation": "namespaced-and-boundary-adapted"
     }
   ],
-  "frontierloop_version": "0.8.1",
+  "frontierloop_version": "0.8.2",
   "routing_model": "self-contained-core-plus-narrow-direct-specialists"
 }

@@ -1,4 +1,4 @@
-# FrontierLoop Plugin 0.8.1
+# FrontierLoop Plugin 0.8.2
 
 ## Install from Git
 

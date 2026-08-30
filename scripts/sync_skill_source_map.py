@@ -25,9 +25,6 @@ def main() -> int:
     )
     args = parser.parse_args()
     root = args.root.resolve()
-    manifest = json.loads(
-        (root / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8")
-    )
     source_map_path = root / "references" / "SKILL_SOURCE_MAP.json"
     source_map = json.loads(source_map_path.read_text(encoding="utf-8"))
 
@@ -47,17 +44,13 @@ def main() -> int:
                 {"skill": name, "previous": str(previous), "actual": actual}
             )
 
-    version = str(manifest.get("version", ""))
-    if not version:
-        raise SystemExit("plugin manifest version is missing")
-    source_map["frontierloop_version"] = version
     source_map_path.write_text(
         json.dumps(source_map, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
     print(
         json.dumps(
-            {"version": version, "changed_count": len(changed), "changed": changed},
+            {"changed_count": len(changed), "changed": changed},
             indent=2,
             ensure_ascii=False,
         )

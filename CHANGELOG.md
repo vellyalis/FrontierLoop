@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.8.4 - 2026-08-30
+
+- Removed one-off 0.7.0 -> 0.8.0 acceptance/comparison tooling from current main after its historical
+  evidence was preserved by Git. Current evaluation remains owned by the generic static/live benchmark,
+  activation, comparison, source-map, and release tools documented in `README.md`.
+- Removed the obsolete 0.6.0 migration note and the empty third-party requirements placeholder; historical
+  migration facts remain in this changelog and the evaluation stack continues to use Python 3.11+ standard
+  library only.
+- Removed the redundant release-version copy from `SKILL_SOURCE_MAP.json`; the map now owns only provenance,
+  mapping, and hashes while Codex/Taddkorro manifests own release version identity.
+- Kept current evaluation cases, deterministic release tooling, Codex activation evidence, transactional
+  installation, and all 23 active Skill contracts unchanged.
+
 ## 0.8.3 - 2026-08-30
 
 - Reduced Vibe Harness provenance to a developer-only notice and source-map metadata instead of carrying a

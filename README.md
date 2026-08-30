@@ -1,4 +1,4 @@
-# FrontierLoop Plugin 0.8.3
+# FrontierLoop Plugin 0.8.4
 
 ## Install from Git
 
@@ -8,7 +8,7 @@ linking `~/.agents/skills` directly to the repository or cache.
 ~~~powershell
 git clone https://github.com/vellyalis/FrontierLoop.git "$env:USERPROFILE\plugins\frontier-loop"
 cd "$env:USERPROFILE\plugins\frontier-loop"
-git checkout v0.8.3
+git checkout v0.8.4
 pwsh .\scripts\Verify-FrontierLoop.ps1 -Root .
 pwsh .\scripts\Install-FrontierLoop.ps1 `
   -Source . `

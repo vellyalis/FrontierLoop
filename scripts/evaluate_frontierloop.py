@@ -1,11 +1,27 @@
 #!/usr/bin/env python3
 """Deterministic FrontierLoop static and baseline/candidate evaluator."""
 from __future__ import annotations
-import argparse, hashlib, json, re, sys
+import argparse, hashlib, json, os, re, sys
 from pathlib import Path
 
 IMPLICIT = {"frontier-core","frontier-architecture","frontier-debug-investigation","frontier-security-review","frontier-performance-engineering","frontier-portfolio","frontier-recovery"}
 FORBIDDEN = {"vh.exe","mission.db","events.db","frontierloop.db"}
+
+def excluded_path(rel: Path) -> bool:
+    parts=tuple(part.lower() for part in rel.parts);name=rel.name.lower()
+    if not parts:return False
+    if parts[0] in {".git","provenance"}:return True
+    if len(parts)>=2 and parts[0]=="evaluation" and parts[1]=="results":return True
+    return "__pycache__" in parts or name.endswith(".pyc") or name.startswith(".frontier-loop-") or name.startswith(".taddkorro-") or any(part in {"tmp","temp"} or "install-backup" in part for part in parts)
+
+def source_files(root: Path):
+    root=root.resolve()
+    for base,dirs,names in os.walk(root,followlinks=False):
+        base_path=Path(base);rel_base=base_path.relative_to(root)
+        dirs[:]=sorted(d for d in dirs if not excluded_path(rel_base/d))
+        for name in sorted(names):
+            rel=rel_base/name
+            if not excluded_path(rel):yield root/rel
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -55,8 +71,9 @@ def evaluate_capabilities(root: Path, benchmark: dict, skills: set[str], full_te
 
 def validate_root(root: Path, role="candidate", benchmark_override=None, user_skills_root=None):
     root = root.resolve(); errors=[]; skill_rows=[]; files={}
+    scoped_files=list(source_files(root))
     try:
-        for path in sorted(p for p in root.rglob("*") if p.is_file()):
+        for path in scoped_files:
             rel=path.relative_to(root).as_posix(); files[rel]=path.read_text(encoding="utf-8",errors="replace")
     except Exception as exc: errors.append(f"file inventory: {exc}")
     skill_root=root/"skills"; dirs=[]
@@ -107,7 +124,8 @@ def validate_root(root: Path, role="candidate", benchmark_override=None, user_sk
     match=re.search(r"(?ms)^## Implicit set\s*(.*?)(?=^## Explicit-only set)",routing)
     if match: implicit_section=match.group(1)
     else: errors.append("routing matrix lacks bounded implicit set section")
-    routed=set(re.findall(r"frontier-[a-z0-9-]+",implicit_section))
+    implicit_table="\n".join(line for line in implicit_section.splitlines() if line.lstrip().startswith("|"))
+    routed=set(re.findall(r"`(frontier-[a-z0-9-]+)`",implicit_table))
     if routed!=IMPLICIT: errors.append(f"routing implicit names mismatch: {sorted(routed)}")
     explicit_section=""
     match=re.search(r"(?ms)^## Explicit-only set\s*(.*?)(?=^## )",routing)
@@ -117,11 +135,11 @@ def validate_root(root: Path, role="candidate", benchmark_override=None, user_sk
     effective_benchmark=benchmark_override or benchmark
     capabilities=evaluate_capabilities(root,effective_benchmark,names,all_text) if effective_benchmark else []
     gate=(effective_benchmark or {}).get("promotion_gate",{})
-    manifest_count=sum(1 for p in root.rglob("plugin.json") if p.parent.name==".codex-plugin")
-    forbidden=[p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file() and (p.name.lower() in FORBIDDEN or p.suffix.lower() in {".sqlite",".sqlite3"})]
+    manifest_count=sum(1 for p in scoped_files if p.name=="plugin.json" and p.parent.name==".codex-plugin")
+    forbidden=[p.relative_to(root).as_posix() for p in scoped_files if p.name.lower() in FORBIDDEN or p.suffix.lower() in {".sqlite",".sqlite3"}]
     guardrails={
       "no-forbidden-runtime-files":not forbidden,
-      "no-plugin-agents-md":not any(p.is_file() for p in root.rglob("AGENTS.md")),
+      "no-plugin-agents-md":not any(p.name=="AGENTS.md" for p in scoped_files),
       "implicit-skill-budget":len(implicit)<=int(gate.get("maximum_implicit_skills",7)),
       "routing-contract-floor":len(explicit_routed)>=int(gate.get("minimum_routing_contracts",16)),
       "no-automatic-mutation-contract":bool(re.search(r"never automatically modifies",readme,re.I) and re.search(r"automatic recovery",files.get("references/RUNTIME_BOUNDARY.md",""),re.I)),
@@ -171,6 +189,10 @@ def self_test():
     assert implicit_policy("policy:\n  allow_implicit_invocation: true\n")
     assert search("a.*c","A b C")
     assert stable_hash({"b":2,"a":1})==stable_hash({"a":1,"b":2})
+    assert excluded_path(Path(".git/config"))
+    assert excluded_path(Path("evaluation/results/old.json"))
+    assert excluded_path(Path("provenance/source.md"))
+    assert not excluded_path(Path("evaluation/live-benchmark-cases.json"))
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1]);p.add_argument("--baseline-root",type=Path);p.add_argument("--user-skills-root",type=Path);p.add_argument("--json-out",type=Path);p.add_argument("--markdown-out",type=Path);p.add_argument("--self-test",action="store_true");a=p.parse_args()

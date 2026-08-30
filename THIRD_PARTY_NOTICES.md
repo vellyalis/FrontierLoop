@@ -6,11 +6,14 @@ The active FrontierLoop skills include adaptations of files from the user-suppli
 
 The supplied Vibe Harness notice states that its source is offered under the repository's
 `MIT OR Apache-2.0` license declaration. FrontierLoop is distributed under the MIT
-license in `LICENSE`; the original declaration and provenance are preserved at
-`provenance/vibe-harness-runtime-0.3.2-draft/NOTICE.md`, and the original skill files and hashes are
-included for traceability.
+license in `LICENSE`; the original declaration is preserved at
+`provenance/vibe-harness-devkit-0.3.2-draft/NOTICE.md` in the source repository. The upstream Skill
+hashes and active mappings are retained in `references/SKILL_SOURCE_MAP.json`. The exact historical
+upstream Skill snapshot remains recoverable from Git tag `v0.8.2` at
+`provenance/vibe-harness-runtime-0.3.2-draft/skills` rather than being duplicated in the current tree.
 
-This package does not include Vibe Harness compiled runtime dependencies or binaries.
+Installed caches and release archives exclude developer-only `provenance/` material. This package does
+not include Vibe Harness compiled runtime dependencies or binaries.
 
 ## Engineering workflow references added in 0.6.0
 

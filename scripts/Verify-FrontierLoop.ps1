@@ -3,7 +3,7 @@ param([string]$Root=(Split-Path $PSScriptRoot -Parent),[string]$ExpectedSource,[
 $ErrorActionPreference='Stop';Set-StrictMode -Version Latest
 $ExpectedImplicit=@('frontier-architecture','frontier-core','frontier-debug-investigation','frontier-performance-engineering','frontier-portfolio','frontier-recovery','frontier-security-review')|Sort-Object
 function Full([string]$P){[IO.Path]::GetFullPath($P).TrimEnd([char[]]'\/')}
-function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();return $p-eq'.git'-or$p.StartsWith('.git/')-or$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
+function Excluded([string]$Rel){$p=$Rel.Replace('\','/').ToLowerInvariant();return $p-eq'.git'-or$p.StartsWith('.git/')-or$p-eq'provenance'-or$p.StartsWith('provenance/')-or$p.StartsWith('evaluation/results/')-or$p.Contains('/__pycache__/')-or$p.EndsWith('.pyc')-or$p.Contains('/.frontier-loop-')-or$p.Contains('install-backup')-or$p.Contains('/temp/')}
 function Require-Patterns([string]$Path,[string[]]$Patterns){
  if(-not(Test-Path -LiteralPath $Path -PathType Leaf)){throw "Missing $Path"}
  $text=Get-Content -LiteralPath $Path -Raw
@@ -48,6 +48,10 @@ try{
  Require-Patterns (Join-Path $Root 'skills\frontier-routine-change\SKILL.md') @('Routine or micro-edit user request is NOT itself a trigger','never auto-select this Skill','never load it as a peer to an implicit specialist','never use it to replace frontier-core')
  Require-Patterns (Join-Path $Root 'scripts\Install-FrontierLoop.ps1') @("userSkillInstallMode='materialized-copy'",'materialize-managed-junction','Installed materialized skill verification failed','Conflicting skill directory','marketplace source differs from canonical source')
  Require-Patterns (Join-Path $Root 'tests\Test-FrontierLoopInstall.ps1') @('install-materialized','materialized-doctrine-resolution','source-junction-materialized','prior-materialized-upgrade','foreign-directory-fail-closed','marketplace-canonical-source','marketplace-wrong-source-fail-closed')
+ if(-not$ExpectedSource){
+  Require-Patterns (Join-Path $Root 'provenance\vibe-harness-devkit-0.3.2-draft\README.md') @('developer-only provenance','Git tag `v0\.8\.2`','SKILL_SOURCE_MAP\.json')
+  Require-Patterns (Join-Path $Root 'THIRD_PARTY_NOTICES.md') @('release archives exclude developer-only `provenance/`','Git tag `v0\.8\.2`')
+ }
  $skillRoot=Join-Path $Root 'skills';$skills=@(Get-ChildItem -LiteralPath $skillRoot -Directory -Force|Where-Object {Test-Path -LiteralPath (Join-Path $_.FullName 'SKILL.md') -PathType Leaf}|Sort-Object Name);if($skills.Count-ne23){throw "Skill count $($skills.Count) != 23"}
  $implicit=[Collections.Generic.List[string]]::new()
  foreach($s in $skills){$text=Get-Content -LiteralPath (Join-Path $s.FullName 'SKILL.md') -Raw;$fm=[regex]::Match($text,'(?s)\A---\r?\n(.*?)\r?\n---\r?\n');$nm=[regex]::Matches($fm.Groups[1].Value,'(?m)^name:\s*([^\r\n]+)\s*$');if(-not$fm.Success-or$nm.Count-ne1-or$nm[0].Groups[1].Value.Trim(' ','"',"'")-ne$s.Name){throw "Skill frontmatter mismatch: $($s.Name)"};$yp=Join-Path $s.FullName 'agents\openai.yaml';if(-not(Test-Path -LiteralPath $yp -PathType Leaf)){throw "Missing openai.yaml: $($s.Name)"};$ym=[regex]::Matches((Get-Content -LiteralPath $yp -Raw),'(?mi)^\s*allow_implicit_invocation:\s*(true|false)\s*$');if($ym.Count-ne1){throw "Implicit policy malformed: $($s.Name)"};if([bool]::Parse($ym[0].Groups[1].Value)){$implicit.Add($s.Name)}}

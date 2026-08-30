@@ -10,7 +10,7 @@ def is_reparse(path: Path) -> bool:
     except OSError:return True
 
 def excluded_roots(root: Path, output: Path) -> set[Path]:
-    return {(root/".git").resolve(),(root/"evaluation"/"results").resolve(),output.resolve()}
+    return {(root/".git").resolve(),(root/"provenance").resolve(),(root/"evaluation"/"results").resolve(),output.resolve()}
 
 def excluded(rel: Path, absolute: Path, roots: set[Path], extras: set[Path]) -> bool:
     resolved=absolute.resolve()
@@ -66,9 +66,9 @@ def verify(root: Path, output: Path, epoch: int):
 def self_test(test_temp_root: Path | None = None):
     if test_temp_root is not None:test_temp_root.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="frontier-release-test-",dir=test_temp_root) as td:
-        root=Path(td)/"root";(root/".codex-plugin").mkdir(parents=True);(root/".codex-plugin"/"plugin.json").write_text('{"version":"test"}',encoding="utf-8");(root/"a.txt").write_bytes(b"a\r\n");(root/"__pycache__").mkdir();(root/"__pycache__"/"x.pyc").write_bytes(b"x")
+        root=Path(td)/"root";(root/".codex-plugin").mkdir(parents=True);(root/".codex-plugin"/"plugin.json").write_text('{"version":"test"}',encoding="utf-8");(root/"a.txt").write_bytes(b"a\r\n");(root/"__pycache__").mkdir();(root/"__pycache__"/"x.pyc").write_bytes(b"x");(root/"provenance").mkdir();(root/"provenance"/"source.txt").write_text("developer-only",encoding="utf-8")
         out=root/"release.zip";first=build(root,out,946684800);one=out.read_bytes();second=build(root,out,946684800);two=out.read_bytes();assert one==two
-        with zipfile.ZipFile(out) as z:names=z.namelist();assert names==sorted(names) and "release.zip" not in names and not any("__pycache__" in n for n in names)
+        with zipfile.ZipFile(out) as z:names=z.namelist();assert names==sorted(names) and "release.zip" not in names and not any("__pycache__" in n for n in names) and not any(n.startswith("provenance/") for n in names)
         assert verify(root,out,946684800)["verified"]
     return {"self_test":"Pass"}
 

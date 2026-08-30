@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "frontier-loop",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Responsibility-correct, direct-first engineering with 23 routed Skills and conditional Engineering Judgment.",
   "enabled": true,
   "skills": [

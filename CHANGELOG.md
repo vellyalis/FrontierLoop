@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.3 - 2026-08-30
+
+- Reduced Vibe Harness provenance to a developer-only notice and source-map metadata instead of carrying a
+  duplicate upstream Skill tree in the current source and runtime install surface.
+- Preserved the exact historical upstream Skill snapshot in Git tag `v0.8.2` and recorded its path in
+  `references/SKILL_SOURCE_MAP.json` so provenance remains auditable without polluting normal distribution.
+- Excluded `provenance/` from versioned install caches and deterministic release archives, with focused tests
+  preventing future packaging regressions.
+
 ## 0.8.2 - 2026-08-29
 
 - Fixed Codex Personal Marketplace path resolution: local plugin paths are resolved from the configured marketplace root, not from `.agents/plugins/marketplace.json` itself.

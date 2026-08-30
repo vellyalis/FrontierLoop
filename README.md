@@ -1,4 +1,4 @@
-# FrontierLoop Plugin 0.8.2
+# FrontierLoop Plugin 0.8.3
 
 ## Install from Git
 
@@ -8,7 +8,7 @@ linking `~/.agents/skills` directly to the repository or cache.
 ~~~powershell
 git clone https://github.com/vellyalis/FrontierLoop.git "$env:USERPROFILE\plugins\frontier-loop"
 cd "$env:USERPROFILE\plugins\frontier-loop"
-git checkout v0.8.1
+git checkout v0.8.3
 pwsh .\scripts\Verify-FrontierLoop.ps1 -Root .
 pwsh .\scripts\Install-FrontierLoop.ps1 `
   -Source . `
@@ -75,6 +75,17 @@ junctions, and fails closed on foreign directories or arbitrary links.
 Runtime activation remains lazy. Catalog metadata is not activation proof: non-trivial work loads
 `frontier-core`, a positive structural trigger also loads its Engineering Judgment reference, and only the
 nearest triggered specialist is added. Mechanical micro-edits retain the no-body-load fast path.
+
+## Source provenance
+
+FrontierLoop contains adaptations of a user-supplied Vibe Harness devkit snapshot. The active runtime does
+not load, install, or ship the upstream Skill copies. The current repository keeps only developer-facing
+provenance metadata and the upstream notice under `provenance/vibe-harness-devkit-0.3.2-draft/`, while
+`references/SKILL_SOURCE_MAP.json` records the upstream file hashes and their active FrontierLoop mappings.
+
+For an exact copy of the historical upstream Skill snapshot, use Git tag `v0.8.2` and the path
+`provenance/vibe-harness-runtime-0.3.2-draft/skills`. Keeping the full snapshot in Git history preserves
+auditability without making it part of the normal install cache or release payload.
 
 ## Evaluation
 

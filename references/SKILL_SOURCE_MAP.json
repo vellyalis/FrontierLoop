@@ -1,6 +1,8 @@
 {
   "source_bundle": "vibe-harness-runtime-main(2).zip",
   "source_root": "vibe-harness-runtime-main/vibe-harness-devkit-0.3.2-draft/skills",
+  "source_snapshot_git_ref": "v0.8.2",
+  "source_snapshot_git_path": "provenance/vibe-harness-runtime-0.3.2-draft/skills",
   "frontierloop_base_commit": "083f2e37040f4c68aaab6cdf5e8f6fb5dc0e0b98",
   "skills": [
     {
@@ -164,6 +166,6 @@
       "adaptation": "namespaced-and-boundary-adapted"
     }
   ],
-  "frontierloop_version": "0.8.2",
+  "frontierloop_version": "0.8.3",
   "routing_model": "self-contained-core-plus-narrow-direct-specialists"
 }

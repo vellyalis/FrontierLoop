@@ -1,22 +1,14 @@
 ---
 name: frontier-security-review
-description: "Use alongside frontier-core when work touches secrets, authentication, authorization, permissions, untrusted input, prompt injection, external communication, privacy, persistence or migration, dependencies, or supply-chain risk. This specialist supplements and never replaces frontier-core. When auth or permissions also introduce new persistence, lifecycle ownership, or a public command, combine with frontier-architecture; security review does not replace ownership and public-contract design. Do not add a full security program to ordinary local changes without a trust boundary."
+description: "Review changed trust boundaries: secrets, auth, permissions, untrusted input, privacy, external effects, or supply-chain risk. Persistence alone is not a trigger."
 ---
 
 # Security Review Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-Secret、Auth、Permission、External input、Dependency、Network、A2/A3。
+Secrets、Auth、Permission、untrusted input、privacy、external effects、supply-chainなどのTrust boundaryが実質的に変わる場合。Persistence、Dependencyという単語やA2分類だけでは起動しない。
 
 ## Objective
 
@@ -80,7 +72,7 @@ RiskDiscovered, VerificationRecorded, DecisionProposed
 
 ## Proof obligations
 
-`../../references/ASSURANCE_LEVELS.md`のA2/A3相当Riskに必要なSecurity、Recovery、Data Integrity条件。
+`../frontier-core/references/ASSURANCE_LEVELS.md`のA2/A3相当Riskに必要なSecurity、Recovery、Data Integrity条件。
 
 ## Stop conditions
 

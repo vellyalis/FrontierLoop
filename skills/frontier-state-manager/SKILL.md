@@ -1,6 +1,6 @@
 ---
 name: frontier-state-manager
-description: "Use explicitly for multi-stage, multi-session, cross-agent, or cross-machine work when safe continuation requires a compact verified packet of repository identity, dirty-path ownership, accepted/rejected decisions, material Engineering Change Gate state, residual risk, recovery point, and exact next action. Do not create a second state database or use it for self-contained Routine work."
+description: "Explicit-only: reconcile a compact handoff when work actually spans sessions, machines, or agents. Use existing repository state; do not create another ledger."
 ---
 
 # Frontier Repository State

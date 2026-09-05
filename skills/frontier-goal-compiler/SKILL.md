@@ -1,25 +1,14 @@
 ---
 name: frontier-goal-compiler
-description: "Use explicitly when Goal, acceptance, scope, generalization, or value trade-offs are materially ambiguous. Compile observable success, forbidden states, affected data and invariants, responsibility boundaries, and falsification conditions, then return non-trivial implementation to $frontier-core. Do not run for already-clear Routine work or ask a non-engineer to choose technical module, Core, or API placement."
+description: "Explicit-only: turn materially ambiguous goals, acceptance, scope, or product trade-offs into observable success. Do not ask users to choose technical placement."
 ---
 
 # Goal Compiler Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-- 曖昧な依頼
-- 新規機能・製品方向
-- Acceptanceが不明
-- GoalまたはScopeが変化した
+Explicit user invocation or a material workflow handoff for unresolved goals, acceptance, scope, or product trade-offs. Not a clear feature request merely because it is new.
 
 ## Objective
 

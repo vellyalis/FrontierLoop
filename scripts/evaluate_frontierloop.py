@@ -142,7 +142,7 @@ def validate_root(root: Path, role="candidate", benchmark_override=None, user_sk
       "no-plugin-agents-md":not any(p.name=="AGENTS.md" for p in scoped_files),
       "implicit-skill-budget":len(implicit)<=int(gate.get("maximum_implicit_skills",7)),
       "routing-contract-floor":len(explicit_routed)>=int(gate.get("minimum_routing_contracts",16)),
-      "no-automatic-mutation-contract":bool(re.search(r"never automatically modifies",readme,re.I) and re.search(r"automatic recovery",files.get("references/RUNTIME_BOUNDARY.md",""),re.I)),
+      "no-automatic-mutation-contract":bool(re.search(r"never automatically modifies",readme,re.I) and re.search(r"automatic recovery",files.get("skills/frontier-core/references/RUNTIME_BOUNDARY.md",""),re.I)),
       "one-plugin-manifest":manifest_count==1,
     }
     links=[]

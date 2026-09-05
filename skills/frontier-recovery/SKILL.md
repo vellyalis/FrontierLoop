@@ -1,6 +1,6 @@
 ---
 name: frontier-recovery
-description: "Use only after an actual interruption, failed command, uncertain external effect, stale or conflicting handoff, regression, worktree confusion, partial installation, or migration failure has occurred. Do not auto-load this Skill merely because a design or migration must be interruption-safe or recoverable; migration/architecture owns design-time rollback and recovery semantics until a real interrupted or uncertain state exists. Reconcile repository identity, Git, artifacts, evidence, and external target state before retrying, rolling back, or resuming. When a non-trivial change resumes, frontier-core remains the Work Unit owner and this specialist supplements it. Do not create a second runtime database."
+description: "Reconcile interrupted or uncertain effects, conflicting handoffs, partial installations, or ambiguous worktrees. Not a harmless command error or design-time rollback planning."
 ---
 
 # Frontier Recovery
@@ -13,8 +13,10 @@ and external state before retrying any operation whose outcome is uncertain.
 
 ## Trigger
 
-Crash, interruption, stale handoff, failed command, regression, migration failure, ambiguous
-worktree/branch, partial external action, or resumed work from another session or computer.
+An actual interruption, conflicting or stale handoff, partial migration, ambiguous
+worktree/branch, regression, or external action whose effects are uncertain. A
+harmless command error with a known absent effect or an ordinary session resume
+with reconciled state does not require this workflow.
 
 This trigger is about observed recovery state, not a future design requirement. A request to make a
 migration interruptible, rollback-safe, or recoverable does not by itself activate this Skill; keep that

@@ -1,24 +1,14 @@
 ---
 name: frontier-intake
-description: "Use explicitly when repository, Goal, acceptance, affected owner, or safe-next-action context is materially unknown. Inspect only facts and data/ownership unknowns that can change routing or implementation, then hand clear work to $frontier-core or material Goal ambiguity to $frontier-goal-compiler. Do not use as an automatic prerequisite or ceremony for every task."
+description: "Explicit-only: resolve missing project identity, acceptance, or safe-next-action context. Not a prerequisite for every task; unreadable or missing paths are not empty projects."
 ---
 
 # Intake Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-- 新しい依頼を受けた
-- Repositoryの状態が不明
-- ユーザーが目的だけを伝えた
+Explicit user invocation or a material workflow handoff when project identity, acceptance, or safe-next-action context is genuinely missing. Not every new request.
 
 ## Objective
 
@@ -32,7 +22,7 @@ reviewer independence, or machine enforcement.
 
 ## Preconditions
 
-RepositoryへのRead access。存在しないProjectでは空Projectとして扱う。
+対象RepositoryへのRead accessと一意なPath解決。Missing、permission denied、unresolvedはEmptyではない。空と判断できるのは対象Pathの列挙に成功した場合だけ。新規作成は明示された新規ProjectのScopeに限る。
 
 ## Frontier Core handoff
 

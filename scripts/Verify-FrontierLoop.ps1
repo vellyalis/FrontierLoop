@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([string]$Root=(Split-Path $PSScriptRoot -Parent),[string]$ExpectedSource,[string]$JsonOut)
+param([string]$Root=(Split-Path $PSScriptRoot -Parent),[string]$ExpectedSource,[string]$JsonOut,[string]$InstalledSkillRoot)
 $ErrorActionPreference='Stop';Set-StrictMode -Version Latest
 $ExpectedImplicit=@('frontier-architecture','frontier-core','frontier-debug-investigation','frontier-performance-engineering','frontier-portfolio','frontier-recovery','frontier-security-review')|Sort-Object
 function Full([string]$P){[IO.Path]::GetFullPath($P).TrimEnd([char[]]'\/')}
@@ -25,27 +25,20 @@ try{
  $doctrinePath=Join-Path $Root 'skills\frontier-core\references\ENGINEERING_JUDGMENT.md'
  Require-Patterns $doctrinePath @('(?m)^## FOUNDATION\s*$','(?m)^## REDUCTION\s*$','(?m)^## REALITY\s*$','(?m)^## Mechanism admission rule\s*$','DIRECT.*INVESTIGATE.*RESTRUCTURE.*BLOCKED','fixed weights','Do not load this reference for a mechanical micro-edit')
  $wiring=[ordered]@{
-  'skills\frontier-core\SKILL.md'=@('references/ENGINEERING_JUDGMENT\.md','conditional decision reference','Routine\s+local edits direct','Do not open .*ENGINEERING_JUDGMENT\.md.*merely to\s+confirm','only after a positive material trigger','module or Core placement','material Module/Core placement')
-  'skills\frontier-architecture\SKILL.md'=@('\.\./frontier-core/references/ENGINEERING_JUDGMENT\.md','FOUNDATION','REDUCTION')
-  'skills\frontier-debug-investigation\SKILL.md'=@('\.\./frontier-core/references/ENGINEERING_JUDGMENT\.md','INVESTIGATE','compensating mechanism')
-  'skills\frontier-performance-engineering\SKILL.md'=@('\.\./frontier-core/references/ENGINEERING_JUDGMENT\.md','For every measured performance goal or regression','before the final engineering decision','mechanism admission rule','authoritative event, direct read, or on-demand action')
-  'skills\frontier-migration\SKILL.md'=@('\.\./frontier-core/references/ENGINEERING_JUDGMENT\.md','one canonical\s+authority during coexistence','unbounded dual paths')
- 'references\ROUTING_MATRIX.md'=@('ENGINEERING_JUDGMENT\.md','not an eighth implicit Skill','Mechanical micro-edits do\s+not load it')
+  'skills\frontier-core\SKILL.md'=@('references/ENGINEERING_JUDGMENT\.md','Mechanical micro-edits do not load it','ownership/lifetime','an audit can finish','no mandatory nine-field report','one canonical state','same task','Publication and irreversible effects')
+  'skills\frontier-architecture\SKILL.md'=@('不変と確認済み','references/public-contract\.md','references/boundary-recovery\.md','ENGINEERING_JUDGMENT\.md')
+  'skills\frontier-debug-investigation\SKILL.md'=@('ENGINEERING_JUDGMENT\.md','INVESTIGATE','compensating mechanism','positive concurrency/lifetime trigger')
+  'skills\frontier-performance-engineering\SKILL.md'=@('ENGINEERING_JUDGMENT\.md','For every measured performance goal or regression','authoritative event, direct read, or on-demand action','compare different builds')
+  'skills\frontier-migration\SKILL.md'=@('ENGINEERING_JUDGMENT\.md','one canonical\s+authority during coexistence','unbounded dual paths','separately approved step')
+  'skills\frontier-recovery\SKILL.md'=@('effects are uncertain','harmless command error','design-time responsibility','Never reset, clean, force, or discard user work')
+  'skills\frontier-routine-change\SKILL.md'=@('explicitly names','not.*trigger','重要な採否判断が未解決','frontier-core.*remains')
+  'skills\frontier-security-review\SKILL.md'=@('Trust boundary','Persistence.*だけでは起動しない','Never execute commands','ASSURANCE_LEVELS\.md')
+  'skills\frontier-intake\SKILL.md'=@('Missing.*permission denied.*unresolved.*Empty','列挙に成功した場合だけ')
+  'skills\frontier-portfolio\SKILL.md'=@('review, audit, or plan can finish','Do not mutate merely','approval')
  }
  foreach($entry in $wiring.GetEnumerator()){Require-Patterns (Join-Path $Root $entry.Key) $entry.Value}
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('specialists supplement frontier-core and never replace','actually read the canonical Engineering Judgment reference before the final engineering decision','trigger list below is mandatory')
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('Do not auto-load the explicit-only.*frontier-complexity-review','obvious speculative complexity')
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('any decision to promote feature behavior into Core','do not load frontier-portfolio or frontier-complexity-review')
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('Do not multiply specialists from vocabulary overlap','do not add .*frontier-architecture','merely because persistence or storage is involved','future interruption-safety','unless an actual interruption')
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('narrow performance mechanism replacement is not automatically an Architecture Workstream','Architecture is optional rather than mandatory')
- Require-Patterns (Join-Path $Root 'skills\frontier-debug-investigation\SKILL.md') @('race, timing, shutdown, cancellation, ordering, or lifetime defect','investigation decision itself','positive concurrency/lifetime trigger')
- Require-Patterns (Join-Path $Root 'skills\frontier-architecture\SKILL.md') @('Core-versus-feature placement is always a positive Doctrine-read trigger','explicit frontier-migration already owns coexistence')
- Require-Patterns (Join-Path $Root 'skills\frontier-migration\SKILL.md') @('not merely because the migrated surface is persisted','add frontier-recovery only after an actual interruption')
- Require-Patterns (Join-Path $Root 'skills\frontier-recovery\SKILL.md') @('only after an actual interruption','Do not auto-load this Skill merely because a design or migration must be interruption-safe','design-time responsibility')
- Require-Patterns (Join-Path $Root 'skills\frontier-architecture\SKILL.md') @('obvious speculative Core promotion can be rejected directly','Do not load the\s+explicit-only `frontier-complexity-review`')
- Require-Patterns (Join-Path $Root 'skills\frontier-core\SKILL.md') @('positive activation contract','actually open and read every matching specialist','reading only .*ENGINEERING_JUDGMENT\.md.*does not satisfy specialist activation','independent triggers coexist')
- foreach($name in @('frontier-architecture','frontier-debug-investigation','frontier-security-review','frontier-performance-engineering')){Require-Patterns (Join-Path $Root ('skills\'+$name+'\SKILL.md')) @('alongside frontier-core','supplements and never replaces frontier-core')}
- Require-Patterns (Join-Path $Root 'skills\frontier-routine-change\SKILL.md') @('Routine or micro-edit user request is NOT itself a trigger','never auto-select this Skill','never load it as a peer to an implicit specialist','never use it to replace frontier-core')
+ if($InstalledSkillRoot){$referenceRoot=$InstalledSkillRoot}else{$referenceRoot=Join-Path $Root 'skills'}
+ & (Join-Path $Root 'scripts\Verify-SkillReferences.ps1') -SkillRoot $referenceRoot | Out-Null
  Require-Patterns (Join-Path $Root 'scripts\Install-FrontierLoop.ps1') @("userSkillInstallMode='materialized-copy'",'materialize-managed-junction','Installed materialized skill verification failed','Conflicting skill directory','marketplace source differs from canonical source')
  Require-Patterns (Join-Path $Root 'tests\Test-FrontierLoopInstall.ps1') @('install-materialized','materialized-doctrine-resolution','source-junction-materialized','prior-materialized-upgrade','foreign-directory-fail-closed','marketplace-canonical-source','marketplace-wrong-source-fail-closed')
  foreach($historical in @('MIGRATION.md','requirements-release.txt','scripts\final_validate_0_8.py','scripts\run_opencode_frontierloop_comparison.py','scripts\aggregate_opencode_activation_runs.py','scripts\opencode_final_json_wrapper.py')){if(Test-Path -LiteralPath (Join-Path $Root $historical)){throw "Historical one-off artifact returned to current main: $historical"}}

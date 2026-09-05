@@ -1,18 +1,10 @@
 ---
 name: frontier-routine-change
-description: "EXPLICIT-ONLY HANDOFF HELPER. Use ONLY when the user names $frontier-routine-change or an already-loaded FrontierLoop workflow explicitly hands off a clear local change under frontier-core. A Routine or micro-edit user request is NOT itself a trigger: never auto-select this Skill, never load it as a peer to an implicit specialist, and never use it to replace frontier-core."
+description: "Explicit-only handoff helper for a clear local change. Core remains owner; ordinary routine or micro-edit requests do not activate this helper."
 ---
 
 # Routine Change Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
@@ -60,7 +52,7 @@ placement, dependency direction, public contract, storage, or failure／recovery
 11. 最小のResponsibility-correctなVerticalを実装する
 12. 変更挙動、Data／ContractのMaterial Boundary、Failure Visibilityを検証する
 13. 置換した旧経路、Fallback、Flag、重複Helper、Obsolete Testを削除し、残す場合はOwnerとExit Conditionを示す
-14. 新規複雑性がある場合だけ`$frontier-complexity-review`を使い、既存Gateがあれば通す
+14. 明白に不要な複雑性はCore内で却下する。最小案の比較後も重要な採否判断が未解決の場合だけ`$frontier-complexity-review`へ明示的に渡す
 15. Evidenceを更新し、再開に必要な場合だけ既存Handoffを更新する
 
 

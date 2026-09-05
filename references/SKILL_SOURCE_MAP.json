@@ -10,7 +10,7 @@
       "active_name": "frontier-architecture",
       "source_path": "skills/architecture/SKILL.md",
       "source_sha256": "3350ac41d6eaa75240cbe486b9432967643d293f71afacf20222389cfcf9e070",
-      "active_sha256": "8aab41e25355f18f7c61c372fbfeeab64a5fe93d1efcbc16f6e0c7fb85fdd8f3",
+      "active_sha256": "73144f810b91d596b685826f719220c19260edcbeb1264ad6eed073e427d965f",
       "adaptation": "namespaced-boundary-adapted-multi-boundary-routed-and-engineering-judgment-integrated"
     },
     {
@@ -18,7 +18,7 @@
       "active_name": "frontier-complexity-review",
       "source_path": "skills/complexity-review/SKILL.md",
       "source_sha256": "3fb8555c9495d23d88c5c5e1d33ebc477cc5c180d497943ad98bd4e9557eeb45",
-      "active_sha256": "a9a956187707b379fbf2289be09ff169b61280690b5886f6d8640706aa0ef905",
+      "active_sha256": "34d60f572014ed6773df5e019099b5c61c9e002642fe37560bb73bb2dbcd930c",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -26,7 +26,7 @@
       "active_name": "frontier-context-compiler",
       "source_path": "skills/context-compiler/SKILL.md",
       "source_sha256": "7e0f71ecf1f16944b764e4efa11a92b45bafeca888f39e428fd3d7edc7113920",
-      "active_sha256": "a6058b73dfeeba636d2b895d5d5612061f76660f4af481c44bb336a606b22a73",
+      "active_sha256": "a8da89689ddcb00882ad07ec741b4cf00ea36b3f8ff25cee6d9f586dd234b7de",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -34,7 +34,7 @@
       "active_name": "frontier-debug-investigation",
       "source_path": "skills/debug-investigation/SKILL.md",
       "source_sha256": "9154b70dac00b550f9f4c725d2a41b6fffd497dbe1018584c245a66832e768e0",
-      "active_sha256": "cba3b2122bae2cc080c6f64c5dff8863269015b56e74059d9bdbeb7d4cd197fd",
+      "active_sha256": "514bf1938d5e8a81394f5aafe1198e70ea6774989d71b7e5279fb9238335d09d",
       "adaptation": "namespaced-boundary-adapted-and-engineering-judgment-integrated"
     },
     {
@@ -42,7 +42,7 @@
       "active_name": "frontier-deep-engineering",
       "source_path": "skills/deep-engineering/SKILL.md",
       "source_sha256": "f450365d3688402a711573564d9f9f9f3ca3972b710330e68fd299f79c5e9523",
-      "active_sha256": "332256f55cec8decdf57c517ee2e9c2a45b038deefee5bcf228ec0e072938c98",
+      "active_sha256": "89240df0e5538a2898562de296a6e5da291547c4d570d23dee2fb71844096717",
       "adaptation": "namespaced-boundary-adapted-and-hard-first-principles-gated"
     },
     {
@@ -50,7 +50,7 @@
       "active_name": "frontier-evidence-pack",
       "source_path": "skills/evidence-pack/SKILL.md",
       "source_sha256": "60fc26195fe384b240f3495e5974a73dd16cdc52f9212a26e6bdabe9222d71e8",
-      "active_sha256": "c37b7723805b2532034476d1446f0ab31f6a55048fc87660a553ecbe8bb98d98",
+      "active_sha256": "9705ffbbdeaa5363d684adf830472fdae2f9e1b686216ca73f0dcde3abb46120",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -58,7 +58,7 @@
       "active_name": "frontier-execution-cycle",
       "source_path": "skills/execution-cycle/SKILL.md",
       "source_sha256": "47fb77883841dd3e8fff2bc68efe7975c6561344dffdc3e084fd7e6c5e3e2d92",
-      "active_sha256": "ff85a682f5d020dd13fc6876d3cd52384dd1c4af83452450b63d047364937ccf",
+      "active_sha256": "637585d7c111b7d379dc0ef99e0b55ddae3db3470005cbd5199e4a46d9121cad",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -66,7 +66,7 @@
       "active_name": "frontier-exploration",
       "source_path": "skills/exploration/SKILL.md",
       "source_sha256": "7abbafc4b7fd2cfb1d12afeed522d99bd7f68d549e36e00370fe3cfc75e72dcc",
-      "active_sha256": "65a1aa6282f19c3d008a74973728dbb58e9bda0faa6e3079879b8e751a1c9837",
+      "active_sha256": "7dee3c81258f5e3c97de891bcb146482573a8c70f6f7a447786f862f61f1e5b2",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -74,7 +74,7 @@
       "active_name": "frontier-goal-compiler",
       "source_path": "skills/goal-compiler/SKILL.md",
       "source_sha256": "c97616e31a4f3835690ef2322f0c56451a47dc378226d3c80017db54951f7690",
-      "active_sha256": "c30b025e46a14a2ae4913d150522ecb032fdde620029bd63643bb5ef0d0a6335",
+      "active_sha256": "7ba02e1c599031aa956b1f45b706e2243a61c00c3b5939451f501b95f6f0a723",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -82,7 +82,7 @@
       "active_name": "frontier-independent-review",
       "source_path": "skills/independent-review/SKILL.md",
       "source_sha256": "f0a721212edb4c430c72bc5bb31943895899808d16829b3584a014863d8709f5",
-      "active_sha256": "c588ec4b87d5b09038ccd1ad9a93a76ee32369482b4bd3a2d996b0bd6f07be7d",
+      "active_sha256": "9423f26577aa33a9f32b6c962c8c9b00028a05fcd56d6347743b1461d597f129",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -90,7 +90,7 @@
       "active_name": "frontier-intake",
       "source_path": "skills/intake/SKILL.md",
       "source_sha256": "16045a9168def2cc4d764f55f35d9a5f56d58cd823e20a755da0f9c2c6934e34",
-      "active_sha256": "ce51cd6e011db3f4c05309b0cc7549b186a81ebd6b520a4cf4af13a803cc2b18",
+      "active_sha256": "7d57d62a144cecaab0293de0083e6b5dd878a0218079235fee4677c5f6b67845",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -98,7 +98,7 @@
       "active_name": "frontier-performance-engineering",
       "source_path": "skills/performance-engineering/SKILL.md",
       "source_sha256": "6240829802bffb01349fecd3c7e991bad565ef1a477321e4fe8a74d8685ca93f",
-      "active_sha256": "c29a28746a80dbd5fdfe95cb18eda9c75b332bf1bde7f34dd3c04e0d1c9f17a2",
+      "active_sha256": "93d3f4a935124650da2ac730dc057fd2e3f5fe13d59a4e81be9261902edceab0",
       "adaptation": "namespaced-boundary-adapted-and-engineering-judgment-integrated"
     },
     {
@@ -106,7 +106,7 @@
       "active_name": "frontier-recovery",
       "source_path": "skills/recovery/SKILL.md",
       "source_sha256": "dc463ab1ca7bad5d89b795863de4aa3d4f8e0654938550eedbfaee5c51c267d7",
-      "active_sha256": "2cec13b21e0e544e2da42aeca5f9bf39057503b75161c51be6b688d022866347",
+      "active_sha256": "a97d9fd79e6ab44e8c3800bf2c700c124cc0c180aa1309ce5ad25433da6dc048",
       "adaptation": "runtime-rewritten"
     },
     {
@@ -114,7 +114,7 @@
       "active_name": "frontier-review-governance",
       "source_path": "skills/review-governance/SKILL.md",
       "source_sha256": "ef8b88760e73d8ace0c7618547f83c84138644878243c6dfb7cc929013602281",
-      "active_sha256": "2adc3caeb65597d08d39ef82170e51c965eb652b6327d47a4d080aa41a73414a",
+      "active_sha256": "6882db7ae073acab473bdc6238e1e61952606773df7bc7495b968c557a6aed6c",
       "adaptation": "namespaced-boundary-adapted-and-pure-refactor-gated"
     },
     {
@@ -122,7 +122,7 @@
       "active_name": "frontier-routine-change",
       "source_path": "skills/routine-change/SKILL.md",
       "source_sha256": "3e4cc21703c91cd701948788eb81915b1c465c7578139a70844c6d80dc980670",
-      "active_sha256": "1d6219b77f7950fd1fbd4751cf12e360768ce4ff2154d81cf8ad5b10a578923d",
+      "active_sha256": "5c8df635d5db3c628ccc31ddb10fd6d5fc1915f97c7ebab91db1190728accd36",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -130,7 +130,7 @@
       "active_name": "frontier-security-review",
       "source_path": "skills/security-review/SKILL.md",
       "source_sha256": "df85d862e8e867ac6161c809c58c444af4f26a4f58f49ce20d23b02bcb6ab80b",
-      "active_sha256": "326945fbf550d116c89800beb46e968a921a2bf36cf101b80ae653b2c331be68",
+      "active_sha256": "b1321b97edc54571c8ec232487e1411a6a084925540a0fa710227cd6015a7d06",
       "adaptation": "namespaced-boundary-adapted-and-multi-boundary-routed"
     },
     {
@@ -138,7 +138,7 @@
       "active_name": "frontier-state-manager",
       "source_path": "skills/state-manager/SKILL.md",
       "source_sha256": "92d3b28f9359c3b9b5aa3d5ef69ffe394faa913a12e1a4b0f24b7e7352253063",
-      "active_sha256": "e177c241f21260a1b9c16204f36d2e199cf67f3ebe76c779d07630a99a5309d3",
+      "active_sha256": "94b6535c555af78e23df241e488e21dacdeea99a40a0573bfdc65666391ead1b",
       "adaptation": "runtime-rewritten"
     },
     {
@@ -146,7 +146,7 @@
       "active_name": "frontier-subagent-orchestration",
       "source_path": "skills/subagent-orchestration/SKILL.md",
       "source_sha256": "97bcd6a67c26e420bb012575861c521c04359cfc023af5b34f413a7574fbf19c",
-      "active_sha256": "141eb5e690fecd699fed0d9173dcc67e7f3f223c449ad3235917f7886ae18e32",
+      "active_sha256": "9fe4f6b2a8b62e5587450bde8d703a12f6eaecf6a4b59f7386e5cd586e28261a",
       "adaptation": "namespaced-and-boundary-adapted"
     },
     {
@@ -154,7 +154,7 @@
       "active_name": "frontier-verification",
       "source_path": "skills/verification/SKILL.md",
       "source_sha256": "056d59e13dfcee1b9f80afa0fc6a33183192c7a6192874c9566d44a86c610924",
-      "active_sha256": "dd611829c68eb04d2711a7312b42fd58a55a9bda9c55a85ce8b23b7216b1ebeb",
+      "active_sha256": "941f7243c8780cea54e31a442f583b5fc1ae6e0df5c1b57c207ad6219d944c57",
       "adaptation": "namespaced-boundary-adapted-flexible-fast-path-and-project-feedback-profile"
     },
     {
@@ -162,7 +162,7 @@
       "active_name": "frontier-version-control",
       "source_path": "skills/version-control/SKILL.md",
       "source_sha256": "80ec0969bace172aa1a80a1d52c868940eaca8d11111ae5ea2708b72d30273ea",
-      "active_sha256": "f1b6fe68069c95c924d07e5308bba5fde5d1f85dc9774146ee9bb4f0f1d3d30b",
+      "active_sha256": "0e459ceaae04b08c8d39a35be77f2cd68f5d106cebb5adfb242dea2ac18696a2",
       "adaptation": "namespaced-and-boundary-adapted"
     }
   ],

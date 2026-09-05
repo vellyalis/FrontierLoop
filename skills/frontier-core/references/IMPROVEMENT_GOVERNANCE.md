@@ -1,5 +1,14 @@
 # Approval-gated FrontierLoop improvement governance
 
+## Explicit scope already granted
+
+One explicit user request may authorize both the named source fixes and their local installation.
+Honor that concrete scope without asking the same approval again at each internal phase. Preserve
+the baseline and validate before installation; do not infer publication, destructive actions, or
+broader self-modification. The separate approval stages below apply when those stages were not
+already granted. An audit or proposal alone still grants no implementation or installation authority.
+
+
 ## Contract
 
 FrontierLoop never modifies its own source, an installed plugin, global skill directories, marketplace

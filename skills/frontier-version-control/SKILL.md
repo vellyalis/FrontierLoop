@@ -1,27 +1,14 @@
 ---
 name: frontier-version-control
-description: "Use explicitly when Git observation, checkpointing, worktree isolation, commit, push, PR, merge, tag, release, or recovery-point management is required. Preserve pre-existing dirty work and checkpoint only a responsibility-correct coherent vertical; remote publication and history changes remain separate approval boundaries."
+description: "Explicit-only: manage checkpoints, worktrees, or authorized Git publication and recovery. Preserve existing changes and distinguish local work from external publication."
 ---
 
 # Version Control Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-- Git repository内でコード、設定、文書、Schemaを変更した
-- 検証済みCurrent Bestを保存する
-- 構造的実験、広いRefactor、削除、Migration、自動生成へ移る
-- 採用ArchitectureまたはCurrent Bestを置き換える
-- Sessionを停止、再開、またはHandoffする
-- Commit、Push、Issue、Pull Request、Tag、Release、Mergeを検討する
+Explicit user invocation or a material workflow handoff for checkpointing, worktree isolation, authorized publication, or recovery. Ordinary Git observation or editing a file does not activate this full workflow.
 
 ## Objective
 

@@ -5,7 +5,7 @@
 This is a shared conditional reference, not a Skill, router, runtime component, or second workflow owner.
 `frontier-core` continues to own the Work Unit. A narrow specialist adds only its material boundary.
 
-Read this reference before selecting an implementation when a non-routine code or configuration change
+Read this reference before selecting an implementation when a non-trivial code or configuration change
 materially changes or depends on one or more of:
 
 - data representation, canonical source, write authority, ownership, lifetime, or invalidation;

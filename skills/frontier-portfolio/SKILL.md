@@ -1,6 +1,6 @@
 ---
 name: frontier-portfolio
-description: "Use ONLY when the decisive evaluator is genuinely missing or the solution structure remains materially uncertain after direct inspection. Do NOT load this Skill to decide whether a clear proposed service, Core promotion, cache, abstraction, or other mechanism is speculative; frontier-core or frontier-architecture must reject that directly when the approach and acceptance check are already clear."
+description: "Choose a decision route when direct inspection leaves the evaluator missing or solution structure materially unresolved. Not a clear change or obviously unnecessary abstraction."
 ---
 
 # Frontier Portfolio
@@ -10,8 +10,9 @@ description: "Use ONLY when the decisive evaluator is genuinely missing or the s
 These are acceptance conditions, not suggestions.
 If any invariant is false, the run is incomplete even when code compiles or tests pass.
 
-- **ARTIFACT**: Produce or modify the real task artifact. A plan, portfolio list,
-  state file, test, or report alone is not a completed run.
+- **ARTIFACT**: Deliver what was requested. Implementation needs real behavior;
+  a review, audit, or plan can finish with its requested evidence/report, including
+  a failing product verdict. Do not mutate merely to satisfy this invariant.
 - **ROUTE**: Choose direct execution, evaluator construction, or a portfolio from
   the actual uncertainty. Skill invocation does not justify manufacturing alternatives.
 - **BREADTH**: When a portfolio is justified, keep exactly two workstreams: the

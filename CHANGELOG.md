@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.5 - 2026-09-05
+
+- Reduced Skill descriptions and root bodies for progressive disclosure, removing legacy workflow ceremony
+  while retaining the 23-Skill capability set and concrete specialist boundaries.
+- Fixed shared-install reference resolution by keeping runtime/assurance guidance and supporting documents
+  inside portable Skill trees, with a dedicated reference validator for installed copies.
+- Removed forced next-turn Skill handoffs and aligned architecture, review, recovery, and completion rules so
+  authorized work continues until the requested deliverable or a real stop boundary.
+- Hardened installation commit semantics so failure to delete an obsolete backup cannot roll back an already
+  verified installation; cleanup failures remain explicit warnings with the new version active.
+
 ## 0.8.4 - 2026-08-30
 
 - Removed one-off 0.7.0 -> 0.8.0 acceptance/comparison tooling from current main after its historical

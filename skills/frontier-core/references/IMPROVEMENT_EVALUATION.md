@@ -1,5 +1,14 @@
 # FrontierLoop improvement evaluation
 
+## Explicit scope already granted
+
+One explicit user request may authorize both the named source fixes and their local installation.
+Honor that concrete scope without asking the same approval again at each internal phase. Preserve
+the baseline and validate before installation; do not infer publication, destructive actions, or
+broader self-modification. The separate approval stages below apply when those stages were not
+already granted. An audit or proposal alone still grants no implementation or installation authority.
+
+
 ## What self-improvement means here
 
 FrontierLoop can improve its own reviewed source, but it cannot grant itself authority. A useful failure or
@@ -77,10 +86,9 @@ raw session transcripts. Promotion still requires the authority boundaries and r
 Run from the FrontierLoop source repository:
 
 ```powershell
-python -m pip install --requirement requirements-release.txt
 python scripts/evaluate_frontierloop.py `
-  --baseline-ref <preserved-baseline> `
-  --candidate-ref <candidate> `
+  --baseline-root <preserved-baseline-directory> `
+  --root <candidate-directory> `
   --json-out evaluation/results/static-comparison.json `
   --markdown-out evaluation/results/static-comparison.md
 ```

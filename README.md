@@ -1,4 +1,4 @@
-# FrontierLoop Plugin 0.8.4
+# FrontierLoop Plugin 0.8.5
 
 ## Install from Git
 
@@ -8,7 +8,7 @@ linking `~/.agents/skills` directly to the repository or cache.
 ~~~powershell
 git clone https://github.com/vellyalis/FrontierLoop.git "$env:USERPROFILE\plugins\frontier-loop"
 cd "$env:USERPROFILE\plugins\frontier-loop"
-git checkout v0.8.4
+git checkout v0.8.5
 pwsh .\scripts\Verify-FrontierLoop.ps1 -Root .
 pwsh .\scripts\Install-FrontierLoop.ps1 `
   -Source . `
@@ -124,7 +124,7 @@ Use $frontier-evidence-pack to prepare the final delivery and continuation evide
 ```
 
 See `references/ROUTING_MATRIX.md`, `skills/frontier-core/references/ENGINEERING_JUDGMENT.md`,
-`references/RUNTIME_BOUNDARY.md`, and `references/ASSURANCE_LEVELS.md`.
+`skills/frontier-core/references/RUNTIME_BOUNDARY.md`, and `skills/frontier-core/references/ASSURANCE_LEVELS.md`.
 
 ## Verification behavior
 

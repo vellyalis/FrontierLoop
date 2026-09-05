@@ -1,22 +1,14 @@
 ---
 name: frontier-execution-cycle
-description: "Use explicitly when a loaded workflow needs a finite Research-Plan-Do-Check-Act loop for multi-step implementation or exploration. frontier-core remains the work owner; preserve decision-bearing Engineering Change Gate state without turning Routine work into process ceremony."
+description: "Explicit-only: apply a bounded research, implementation, and feedback loop when a loaded workflow needs it. Not an additional lifecycle for routine work."
 ---
 
 # Execution Cycle Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-RoutineまたはExplorationで、Research、Plan、Do、Check、Actのいずれかを実行する。
+Explicit user invocation or a material workflow handoff requiring a bounded research/implementation/feedback loop. A routine edit or test does not activate another lifecycle.
 
 ## Objective
 

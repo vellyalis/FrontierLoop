@@ -115,6 +115,8 @@ $createdSkills=[Collections.Generic.List[string]]::new()
 $swapped=$false
 $hadDestination=Test-Path -LiteralPath $destination
 $idempotent=$false
+$committed=$false
+$cleanupWarnings=[Collections.Generic.List[object]]::new()
 try{
   [IO.Directory]::CreateDirectory($DestinationRoot)|Out-Null
   CopyTree $Source $stage
@@ -131,14 +133,19 @@ try{
     }
   }
   if($InjectFailureAfterSwap){throw 'Injected failure after swap'}
-  & $verify -Root $destination -ExpectedSource $Source|Out-Null
+  & $verify -Root $destination -ExpectedSource $Source -InstalledSkillRoot $UserSkillRoot|Out-Null
   if($LASTEXITCODE-ne0){throw 'Destination verification failed'}
   foreach($p in $plan){$i=Get-Item -LiteralPath $p.path -Force;if(($i.Attributes-band[IO.FileAttributes]::ReparsePoint)-ne0-or-not($i-is[IO.DirectoryInfo])-or-not(SameTree $p.path $p.target)){throw "Installed materialized skill verification failed: $($p.name)"}}
-  foreach($b in $skillBackups){if(Test-Path -LiteralPath $b.backup){RemoveNode $b.backup}}
-  if(Test-Path -LiteralPath $destBackup){[IO.Directory]::Delete($destBackup,$true)}
-  [ordered]@{success=$true;whatIf=$false;version=$version;destination=$destination;idempotent=$idempotent;userSkillInstallMode='materialized-copy';skillActions=$plan;rollback='NotNeeded'}|ConvertTo-Json -Depth 6
+  # Verification commits the new installation. Cleanup must never roll it back
+  # through backups that may already have been deleted or partially removed.
+  $committed=$true
+  foreach($b in $skillBackups){if(Test-Path -LiteralPath $b.backup){try{RemoveNode $b.backup}catch{$cleanupWarnings.Add([ordered]@{path=$b.backup;error=$_.Exception.Message})}}}
+  if(Test-Path -LiteralPath $destBackup){try{[IO.Directory]::Delete($destBackup,$true)}catch{$cleanupWarnings.Add([ordered]@{path=$destBackup;error=$_.Exception.Message})}}
+  if($cleanupWarnings.Count){Write-Warning ('Verified installation retained; old backup cleanup is pending: '+(($cleanupWarnings|ForEach-Object path)-join', '))}
+  [ordered]@{success=$true;whatIf=$false;version=$version;destination=$destination;idempotent=$idempotent;userSkillInstallMode='materialized-copy';skillActions=$plan;rollback='NotNeeded';cleanupWarnings=@($cleanupWarnings)}|ConvertTo-Json -Depth 6
   exit 0
 }catch{
+  if($committed){throw}
   [Console]::Error.WriteLine('restoring previous FrontierLoop state')
   foreach($path in @($createdSkills)){if(Test-Path -LiteralPath $path){RemoveNode $path}}
   foreach($b in $skillBackups){if(Test-Path -LiteralPath $b.backup){Move-Item -LiteralPath $b.backup -Destination $b.path;if($b.previousKind-eq'junction'){$restored=Get-Item -LiteralPath $b.path -Force;if($restored.LinkType-ne'Junction'-or-not[string]::Equals((LinkTarget $restored),(Full $b.previousTarget),[StringComparison]::OrdinalIgnoreCase)){throw "Skill junction rollback verification failed: $($b.path)"}}elseif($b.previousKind-eq'directory'){$restored=Get-Item -LiteralPath $b.path -Force;if(($restored.Attributes-band[IO.FileAttributes]::ReparsePoint)-ne0-or-not($restored-is[IO.DirectoryInfo])){throw "Skill directory rollback verification failed: $($b.path)"}}}}

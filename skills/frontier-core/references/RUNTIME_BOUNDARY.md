@@ -1,6 +1,6 @@
 # Runtime boundary
 
-FrontierLoop 0.7.0 is an instruction-only Codex plugin.
+FrontierLoop is an instruction-only Codex plugin.
 
 It deliberately does **not** include or claim:
 

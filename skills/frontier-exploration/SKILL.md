@@ -1,18 +1,10 @@
 ---
 name: frontier-exploration
-description: "Use explicitly when cause, requirements, architecture, solution structure, or evaluator has material uncertainty that cannot be resolved by one direct change or focused experiment. Compare structurally different hypotheses, then return implementation to frontier-core or a material boundary decision to frontier-architecture."
+description: "Explicit-only: compare materially different hypotheses when a focused experiment cannot resolve cause, requirements, solution structure, or evaluation."
 ---
 
 # Exploration Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 

@@ -1,22 +1,10 @@
 ---
 name: frontier-review-governance
-description: "Use explicitly to adjudicate an Independent Review report, a pure or behavior-preserving refactor claim, re-review scope, or a proposed blocking decision. Apply closed blocking bases, deduplication, finite rework, and complexity guards; do not run as an automatic review for every change."
+description: "Explicit-only: adjudicate findings, re-review scope, blocking decisions, or a behavior-preserving refactor claim. Not automatic review after every edit."
 ---
 
 # Review Governance Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
-
-- Skill ID: `$frontier-review-governance`
-- Contract version: `1.0.0`
-- Authority: このSkillの明示Blocking policy。Repository policyと最新ユーザー指示が優先
 
 ## Trigger
 
@@ -48,7 +36,7 @@ Reviewを弱くするのではなく、Reviewerの権限を欠陥候補の発見
 
 - ReviewerとBuilderの実際のContext／Agent／Model分離状態を確認済み。存在しないRun IDやPrincipalを捏造しない。
 - ReviewerはBuilder SessionをResumeしていない。
-- A2／A3では`independence=independent`、A0／A1で`partial`を使う場合はProject PolicyとEvidenceを確認済み。
+- A3または明示Project Policyが要求する独立性を確認する。A2では利用可能なら独立Reviewを優先し、不足保証を明記する。Self-reviewをIndependentと呼ばない。
 - Review Scope、Base OID、Head OIDを固定済み。
 - Finding Candidate Schemaを検証済み。
 - EvidenceのOriginとFreshnessを確認する。Content Hashは利用可能で判断に必要な場合だけ使う。
@@ -56,7 +44,7 @@ Reviewを弱くするのではなく、Reviewerの権限を欠陥候補の発見
 ## Invariants
 
 1. Reviewerは最終Blocking、Completion拒否、Requirement追加を決めない。
-2. Self-reviewまたは`independence=invalid`をIndependent Reviewとして扱わない。A2／A3で`partial`を許可しない。
+2. Self-reviewまたは`independence=invalid`をIndependent Reviewとして扱わない。A3または明示Policyの必須独立Reviewをpartialで置き換えない。
 3. Finding 0件は正常なPASSである。
 4. 完成条件は指摘ゼロではなく、未解決Adjudicated BLOCK 0件である。
 5. S3／InfoはBlocking不可。
@@ -125,7 +113,7 @@ S0／S1はBlocking候補。S2は原則Non-blockingで、Block昇格にはRequire
 
 ### 5. Recommended Action Guard
 
-Reviewerの修正案を欠陥そのものと分離する。BuilderはSimplest Valid Fixを選べる。次を含む案は`$frontier-complexity-review`へ送る。
+Reviewerの修正案を欠陥そのものと分離する。BuilderはSimplest Valid Fixを選べる。次を含む案でも明白に不要ならCoreで却下する。最小案の比較後も重要な採否判断が未解決の場合だけ`$frontier-complexity-review`へ明示的に渡す。
 
 - Dependency／Service／Queue／Storage。
 - 抽象化層／Plugin／Framework。
@@ -237,7 +225,7 @@ Minor／Nit／Ideaが残ることだけを継続理由にしない。
 ## Failure Recovery
 
 - Governance途中で中断した場合はFrozen Scope、既存Evidence、裁定済みFindingから再開し、同じFindingを新規扱いしない。
-- Fingerprint Store不整合: Reviewを進めずRebuildし、重複Blockを防ぐ。
+- Findingの重複識別が不整合なら、既存ReportとEvidenceから照合する。存在しないFingerprint Storeを作成・Rebuildせず、判断不能なFindingだけ保留する。
 - Reviewer Output malformed: Reviewerへ一度だけSchema修正を要求し、失敗時はReview Capability Gap。
 - Scope Hash不一致: Re-reviewを中止して新Scopeを明示的にFreezeする。
 - Budget記録不明: 0へ戻さずUnknownとしてEscalateする。

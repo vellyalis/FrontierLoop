@@ -1,6 +1,6 @@
 ---
 name: frontier-migration
-description: "Use explicitly when changing database schemas, persisted formats, configuration keys, plugin registrations, provider or session identities, public API shapes, or any state contract that must coexist with old readers or writers. Plan compatible expand, migrate, cutover, and contract phases with rollback or backup-backed forward repair. This workflow owns compatibility for the surface being migrated; add frontier-architecture only when ownership or a separate public boundary also changes, not merely because the migrated surface is persisted. Future interruption-safety and rollback are migration design obligations; add frontier-recovery only after an actual interruption, failed migration, partial effect, stale state, or uncertain outcome exists. Never auto-run destructive migration or create a second state owner."
+description: "Explicit-only: plan or execute coexistence and cutover for existing readers, writers, persisted data, or public contracts. Not every database or configuration edit."
 ---
 
 # Frontier Migration

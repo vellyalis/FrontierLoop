@@ -1,18 +1,10 @@
 ---
 name: frontier-subagent-orchestration
-description: "Use explicitly when independent read, exploration, falsification, testing, comparison, or disjoint write Workstreams can be delegated with unique ownership and integration boundaries. Pass relevant Engineering Change Gate decisions and unknowns; never parallelize conflicting mutable ownership or treat subagent self-assessment as acceptance."
+description: "Explicit-only: delegate available independent work with disjoint ownership and an integration boundary. Never simulate workers or parallelize conflicting writes."
 ---
 
 # Subagent Orchestration Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 

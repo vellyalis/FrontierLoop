@@ -1,18 +1,10 @@
 ---
 name: frontier-performance-engineering
-description: "Use and actually read alongside frontier-core whenever the user asks to improve or diagnose latency, throughput, startup, frame time, jitter, memory, allocation, CPU, GPU, I/O, scale, contention, backpressure, or another measurable performance budget or regression. A measured frame-time cost caused by polling, scanning, or continuous background work is an independent mandatory trigger; Frontier Core or the shared Doctrine does not replace this specialist. This specialist supplements and never replaces frontier-core. Do not perform speculative optimization without a measured goal or gap."
+description: "Diagnose or improve a concrete latency, throughput, startup, frame-time, memory, CPU, GPU, or I/O goal. Measure before optimizing; not speculative tuning."
 ---
 
 # Performance Engineering Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 

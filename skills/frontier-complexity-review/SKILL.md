@@ -1,18 +1,10 @@
 ---
 name: frontier-complexity-review
-description: "EXPLICIT-ONLY COMPLEXITY ADMISSION REVIEW. Use ONLY when the user names $frontier-complexity-review or an already-loaded FrontierLoop workflow explicitly hands off a still-material complexity-admission decision. Do not auto-select it merely because a prompt proposes a service, abstraction, cache, or other complexity: frontier-core or frontier-architecture should reject an obviously unnecessary mechanism directly."
+description: "Explicit-only: assess a complexity-admission decision still unresolved after the simplest alternative was considered. Do not load merely because a service, cache, or abstraction is proposed."
 ---
 
 # Complexity Review Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 

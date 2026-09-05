@@ -1,18 +1,10 @@
 ---
 name: frontier-debug-investigation
-description: "Use alongside frontier-core when a defect cause is unknown, intermittent, multi-layer, recurring, environment-sensitive, or prior fixes failed. This specialist supplements and never replaces frontier-core. For a race, timing, shutdown, cancellation, ordering, or lifetime defect whose owner or causal ordering is not yet proven, actually read the shared Engineering Judgment reference before the final investigation decision. Build a reproduction boundary, competing causal hypotheses, discriminating experiments, and a minimal mechanism-level fix. Do not use when the cause and local fix are already clear."
+description: "Investigate unknown, intermittent, layered, recurring, or previously failed defects. Not a clear local cause and fix."
 ---
 
 # Debug Investigation Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
@@ -127,7 +119,7 @@ Separate:
 - Active hypothesisは次の識別実験を変えるものだけ残し、同じ観測を予測する案はまとめるか保留する。
 - 高情報量で安全な実験が実行可能になったら、追加Log読取、一般調査、仮説列挙より先に実行する。
 - 恒久的Telemetry、Retry基盤、Fallback、Watchdog、Cache invalidation、Debug UIは、局所Instrumentationで現在の原因を判定できないEvidenceがある場合だけ検討する。
-- 診断中に広いRefactor、Cleanup、API再設計を行わない。Mechanismが局所化したら`$frontier-routine-change`または`$frontier-architecture`へ移し、調査Skillを終了する。
+- 診断中に広いRefactor、Cleanup、API再設計を行わない。Mechanismが局所化したら`frontier-core`で修正を続け、Materialな責任境界が変わる場合だけArchitectureを追加する。Skill切替のためにTaskを停止しない。
 - 「完全なRoot Cause説明」ではなく、採用判断と再発防止に必要な因果水準まで到達したら停止する。
 
 ## Intermittent Failure Rules

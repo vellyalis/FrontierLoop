@@ -1,22 +1,14 @@
 ---
 name: frontier-evidence-pack
-description: "Use explicitly when final delivery, review, user acceptance, or a real session boundary requires a compact non-engineer-readable evidence packet. Preserve Engineering Change Gate decisions, proof, NotRun work, residual risk, and recovery without creating a document for every Routine change."
+description: "Explicit-only: prepare a compact delivery or acceptance packet when the user or a real handoff needs it. Not a mandatory report format for every change."
 ---
 
 # Evidence Pack Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-作業完了、レビュー依頼、Session停止、User acceptance。
+Explicit user invocation or a material workflow handoff for a requested delivery/acceptance packet or real session boundary. Ordinary completion does not require a separate report workflow.
 
 ## Objective
 

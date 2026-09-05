@@ -7,16 +7,16 @@ FrontierLoop does not depend on a meta-router loading another skill.
 | Trigger | Skill |
 |---|---|
 | Every non-trivial software change, with a lightweight gate for data, responsibility, placement, contracts, proof, observability, and cleanup; micro-edits stay lightweight | `frontier-core` |
-| Material ownership, canonical-state/lifecycle, data-flow, Core/module placement, dependency-direction, API/contract, storage, deployment, or failure-recovery change; bounded recovery of a tangled existing boundary | `frontier-architecture` |
+| Material ownership, lifetime, Core/module, dependency, public-contract, deployment, or failure-boundary decision; not an unchanged-boundary performance mechanism or schema coexistence already owned by migration | `frontier-architecture` |
 | Unknown, intermittent, multi-layer, recurring, environment-sensitive, or failed-fix defect | `frontier-debug-investigation` |
-| Secrets, auth, permissions, untrusted input, external effects, privacy, persistence/migration, or supply chain | `frontier-security-review` |
+| Material changes to trust, secrets, auth, permissions, untrusted input, privacy, external effects, or supply-chain risk; not persistence alone | `frontier-security-review` |
 | Measured latency, throughput, startup, jitter, memory, CPU/GPU/I/O, scale, contention, or backpressure goal/regression | `frontier-performance-engineering` |
 | Missing decisive evaluator or materially open solution structure | `frontier-portfolio` |
-| Interrupted, partial, stale, failed, or uncertain work/state/effects | `frontier-recovery` |
+| Actual interrupted, partial, conflicting, or uncertain effects; not a harmless understood command error or design-time rollback plan | `frontier-recovery` |
 
 These seven skills use `policy.allow_implicit_invocation: true`. `frontier-core` owns every non-trivial
-change and contains the routine engineering gate itself. Escalate only the material ownership, lifecycle,
-data, Core/module placement, API/contract, storage, deployment, or recovery boundary to
+change and contains the routine engineering gate itself. Escalate only a material ownership, lifetime,
+Core/module placement, dependency, public-contract, deployment, or failure-boundary decision to
 `frontier-architecture`; the architecture skill supplements rather than replaces the core owner.
 The same ownership rule applies to every implicit specialist: load `frontier-core` for non-trivial work,
 then add only the narrow specialist that changes handling. An explicit-only helper such as
@@ -70,3 +70,10 @@ created only when they change implementation, adoption, recovery, or a material 
   behavior-preserving refactor and equivalence must be judged against an explicit base.
 - FrontierLoop improvement observation stays inside `frontier-core`; detailed governance is loaded only
   when the user asks to propose or implement a FrontierLoop change. No observation triggers a write.
+
+## Routing boundaries
+
+A readable required Skill body may be loaded in the same task; no next-turn handoff is required.
+A harmless command error with known absent effects is not Recovery. Persistence alone is not Security.
+Review/audit completion means delivered findings and evidence, not an automatically repaired or passing product.
+Mechanical micro-edits do not need Core or specialists. Other work keeps Core as the one owner.

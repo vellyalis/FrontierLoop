@@ -1,23 +1,16 @@
 ---
 name: frontier-architecture
-description: "Use and actually read alongside frontier-core when a software change materially introduces or alters ownership, canonical state or lifetime, data flow, Core or module placement, dependency direction, public API or contract, storage, deployment, failure recovery, or an independent responsibility inside a growing file. Replacing stale cached, scanned, or mirrored state with a direct authoritative read is a material data-flow trigger even when the canonical owner remains unchanged. For any Core-vs-feature placement decision, after loading this Skill always read the shared Engineering Judgment reference before the final decision, including when rejecting the proposed move. This specialist supplements and never replaces frontier-core. Explicitly carry the public-contract lane for a new API, command, schema, or persisted format, except when an explicit frontier-migration already owns coexistence of that same unchanged-owner schema or format and no independent architecture boundary changes. Combine with frontier-security-review when auth, permissions, or a trust boundary is also changed. Do not use for cohesive local edits or line-count-only refactors."
+description: "Resolve material ownership, lifetime, module, dependency, public-contract, or deployment decisions. Not unchanged-boundary performance work or schema coexistence already owned by migration."
 ---
 
 # Architecture Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
 新規Project、主要境界、Data Flow、公開API、Storage、Deployment方式の変更。
-Canonical State／LifetimeのOwner、Core／Module配置、Dependency Direction、Failure Recoveryを実質的に変える場合。
+Canonical State／LifetimeのOwner、Core／Module配置、Dependency Direction、Failure Recoveryを実質的に変える、またはそれらの重要な未知点を判断する場合。
+これらが不変と確認済みのData Flow／性能Mechanism変更はPerformanceが所有できる。既存OwnerのSchema共存はMigrationが所有でき、語彙の重複だけでArchitectureを追加しない。
 既存Grandfathered Fileへ新しいApplication Service、State Lifecycle、Failure Boundaryを追加する場合、または
 絡み合った既存境界を一つのCanonical Ownerへ段階的かつboundedに回復する場合。
 
@@ -57,8 +50,8 @@ merely to satisfy this precondition.
 2. Simplest Valid Baselineを作る
 3. 必要な場合だけ構造的に異なる代替案を作る
 4. Goal適合、可逆性、運用負荷、障害点、Security、検証容易性で比較する
-5. 新規複雑性へReceiptを作る
-6. 推奨案と却下案・再検討条件をADRへ残す
+5. 新規複雑性が必要なら、最小案の不足とOwnerを示す
+6. 継続判断に必要な重要Decisionだけ既存記録へ残す。局所変更のためにReceiptやADRを必須化しない
 7. Userには価値トレードオフだけを確認する
 8. Repositoryが既にArchitecture Health／maintainability baselineを所有する場合だけ変更前後を比較する。このSkillを満たすためだけに新しいRegistryやGateを作らない
 9. 新規SourceまたはModuleではOwner、Responsibility、Change Reason、I/O boundary、Public surface、Focused test seamをコード構造または既存設計記録から判断可能にする。別Metadata台帳を必須にしない
@@ -85,43 +78,11 @@ dependency direction.
 
 ## Existing-system boundary recovery lane
 
-Use bounded recovery when ownership, state writes, side effects, and dependency direction are already
-tangled. This is not authority for an omnibus cleanup.
-
-1. Inventory the real entry points, callers, state readers and writers, side effects, contracts, tests,
-   observability, and recovery behavior for one bounded responsibility.
-2. Choose one canonical owner and the smallest slice whose callers, contract, verification, and rollback
-   can move together.
-3. Introduce a seam only when it removes owner ambiguity or reverses a harmful dependency. Route real
-   consumers through it and prove success and failure behavior before cutover.
-4. Cut over to the canonical owner and remove the superseded runtime path in the same bounded transition,
-   or use an explicit migration with a removal condition when active contracts prevent that.
-5. Stop when that boundary is responsibility-correct. Report neighboring debt without rewriting it, and
-   never retain indefinite dual ownership as a compatibility fallback.
+Recovering an existing tangled ownership boundary: read [the focused lane](references/boundary-recovery.md).
 
 ## Public contract lane
 
-Apply this lane when a change affects an API, MCP/ACP/Tauri command, plugin manifest, persisted file,
-configuration shape, database schema, event format, or another observable boundary.
-
-- Define typed or otherwise machine-checkable input, output, error, ordering, idempotency, and lifecycle
-  behavior before changing the implementation.
-- Treat every observable behavior as a potential dependency. Avoid exposing internal paths, provider
-  details, timing assumptions, raw exceptions, or mutable implementation state unless they are intended
-  contract.
-- Validate untrusted input and third-party responses at the boundary. Do not scatter duplicate validation
-  through already-typed internal code.
-- Prefer additive optional fields and compatible readers/writers. Do not rename, remove, or reinterpret an
-  existing field in place merely because the new shape is cleaner.
-- Keep error semantics predictable and sanitized across the boundary; separate machine-readable identity
-  from human explanation.
-- When old and new consumers must coexist, hand the change to the explicit `$frontier-migration` workflow
-  instead of hiding migration inside the architecture edit.
-- Record the compatibility promise, deprecation trigger, rollback or forward-repair path, and the exact
-  observation that proves old and new consumers remain safe.
-
-Do not create API versioning, pagination, an adapter, or a migration framework without a current consumer
-or failure that requires it.
+Changing an observable API, command, schema, or external contract: read [the focused lane](references/public-contract.md).
 
 ## Decision criteria
 

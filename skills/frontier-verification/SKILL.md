@@ -1,18 +1,10 @@
 ---
 name: frontier-verification
-description: "Use explicitly when a change needs proof selection beyond an obvious targeted check, or when recurring project work needs a Fast/Targeted/Subsystem/Full feedback ladder. The feedback-flow and runtime-evidence lanes are narrower paths inside this Skill, not reasons to stack a second generic verification workflow. Do not activate separately for a pure-refactor equivalence review whose proof is already owned by frontier-review-governance. Keep routine verification fast and undocumented; require rationale only for material infrastructure, expensive suites, or high-impact risk."
+description: "Explicit-only: select non-obvious proof or improve a recurring project feedback flow. Not a wrapper around an obvious targeted test."
 ---
 
 # Verification Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 

@@ -1,22 +1,14 @@
 ---
 name: frontier-independent-review
-description: "Use explicitly for a fresh defect search in a genuinely separate agent, model, or session context on a high-impact change, architecture decision, important Exploration adoption, or pre-completion falsification. Review canonical data/ownership, boundaries, contracts, observability, cleanup, and proof; do not call self-review independent or issue final blocking decisions."
+description: "Explicit-only: search for defects in genuinely separate agent, model, or session context. Report evidence, not final blocking decisions; never label self-review independent."
 ---
 
 # Independent Review Skill
 
-## Codex plugin boundary
-
-This active skill is adapted from the Vibe Harness workflow source. FrontierLoop has no
-`vh.exe`, SQLite store, daemon, event ledger, or atomic state service. Treat legacy State/Event/
-Ledger terms as logical evidence labels only; durable truth remains current repository files,
-Git, nearest instructions, and an existing handoff when one is actually needed. Read
-`../../references/RUNTIME_BOUNDARY.md` before claiming persistence, exactly-once behavior,
-reviewer independence, or machine enforcement.
 
 ## Trigger
 
-A2以上、Architecture変更、Explorationの重要採用、完了前の反証。
+Explicit user invocation or a material workflow handoff requesting a genuinely separate defect search. A2 work benefits from independent review when available; mandatory A3/project guarantees must not be invented or replaced with self-review.
 
 ## Objective
 
